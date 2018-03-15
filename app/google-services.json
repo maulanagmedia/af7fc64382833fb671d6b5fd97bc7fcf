@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "21661230507",
+    "firebase_url": "https://semargres2018.firebaseio.com",
+    "project_id": "semargres2018",
+    "storage_bucket": "semargres2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21661230507:android:8bca3570960dfb14",
+        "android_client_info": {
+          "package_name": "gmedia.net.id.semargres2018"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21661230507-uj7ujj463ecvie450e85iv198hrbu9r5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gmedia.net.id.semargres2018",
+            "certificate_hash": "e975876398fd23dc0982c682e25ef27081c5dde4"
+          }
+        },
+        {
+          "client_id": "21661230507-d9tpmm3uegg7cb1hkh3i97p8nlv51bj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp8A21uzQRBxm8DVHg4nV61qvRfFKAbcE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21661230507-d9tpmm3uegg7cb1hkh3i97p8nlv51bj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Semargres 2018</string>
+
+    <string name="facebook_app_id">352744951877662</string>
+    <string name="fb_login_protocol_scheme">fb352744951877662</string>
+</resources>
