@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium">
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:id="@+id/rv_container">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_kupon"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KUPON SEMARGRES"
+            android:layout_centerInParent="true"
+            android:paddingBottom="@dimen/margin_medium"
+            android:textStyle="bold"
+            android:textColor="@color/color_white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_nomor"
+            android:layout_alignParentBottom="true"
+            android:textStyle="bold"
+            android:gravity="right|center_vertical"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:textColor="@color/color_white"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

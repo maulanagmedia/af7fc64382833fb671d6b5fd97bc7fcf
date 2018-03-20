@@ -8,10 +8,83 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base application theme. -->
+    <style name="AppTheme2" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/MyTitleTextStyle</item>
+    </style>
+
+    <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/color_grey</item>
+    </style>
+
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.TitleOnly">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.Custom.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorAccent">@color/color_white</item>
+        <item name="android:background">@color/color_dialog</item>
+    </style>
+
+    <style name="TabLayoutTop">
+        <item name="colorAccent">@color/color_white</item>
+    </style>
+
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/color_white</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+    </style>
+
+    <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/color_white_54</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="SearchViewTheme" parent="Widget.AppCompat.SearchView.ActionBar">
+        <item name="layout">@layout/toolbar_search_view</item>
+        <item name="commitIcon">@mipmap/ic_commit_icon</item>
+        <item name="colorControlNormal">@color/material_light_active_icon</item>
+        <item name="colorControlHighlight">@color/material_ripple_light</item>
+        <item name="autoCompleteTextViewStyle">@style/AutoCompleteTextViewStyle</item>
+        <item name="suggestionRowLayout">@layout/search_view_suggestion_row</item>
+        <item name="android:maxWidth">9999dp</item>
+    </style>
+
+    <style name="AutoCompleteTextViewStyle" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:popupBackground">@drawable/search_sugestions_bg</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="AppTheme.PopupOverlay">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="searchViewStyle">@style/SearchViewTheme</item>
     </style>
 </resources>

@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gmedia.net.id.semargres2018.MenuEkupon.NavEkupon">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_header"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/tv_kupon"
+                android:text="Total 0 kupon"
+                android:textStyle="bold"
+                android:textColor="@color/color_grey"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/color_grey"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:layout_marginBottom="@dimen/margin_small"></TextView>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_list_kupon"
+            android:layout_below="@id/ll_header">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/pb_loading"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

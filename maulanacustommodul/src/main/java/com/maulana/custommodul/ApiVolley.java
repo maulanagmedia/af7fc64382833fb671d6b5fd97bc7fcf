@@ -26,6 +26,8 @@ import java.util.Map;
 public class ApiVolley {
 
     public static RequestQueue requestQueue;
+    private SessionManager session;
+    private String uid = "", token = "";
 
     public ApiVolley(final Context context, JSONObject jsonBody, String requestMethod, String REST_URL, final String successDialog, final String failDialog, final int showDialogFlag, final VolleyCallback callback){
 
@@ -40,6 +42,10 @@ public class ApiVolley {
         showDialogFlag : 1 = show successDialog / failDialog with filter
         callback : return of the response
         */
+
+        session = new SessionManager(context);
+        uid = session.getUid();
+        token = session.getToken();
 
         final String requestBody = jsonBody.toString();
 
@@ -108,9 +114,9 @@ public class ApiVolley {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
                 params.put("Client-Service", "frontend-client");
-                params.put("Auth-Key", "gmedia_psp_ds");
-                params.put("user", "");
-                params.put("pass", "");
+                params.put("Auth-Key", "gmedia_semargress");
+                params.put("Uid", uid);
+                params.put("Token", token);
                 return params;
             }
 

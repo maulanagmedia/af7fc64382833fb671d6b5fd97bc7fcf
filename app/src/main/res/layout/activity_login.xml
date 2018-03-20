@@ -1,9 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gmedia.net.id.semargres2018.LoginActivity">
+    tools:context="gmedia.net.id.semargres2018.LoginActivity"
+    android:orientation="vertical"
+    android:background="@drawable/ic_background"
+    android:weightSum="1">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="50dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.9"
+                android:src="@drawable/ic_greatsale_logo"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:id="@+id/ll_footer"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_suaramerdeka"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_pemkot"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_kadin"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_gmedia"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ll_footer"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
+            <com.facebook.login.widget.LoginButton
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:id="@+id/btn_fb_ori"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="1">
+
+                <Button
+                    android:layout_width="240dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/btn_facebook"
+                    android:background="@drawable/ic_login_fb"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_marginBottom="@dimen/margin_small">
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="1">
+
+                <Button
+                    android:layout_width="240dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/btn_google"
+                    android:background="@drawable/ic_login_gmail"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_marginBottom="@dimen/margin_small">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

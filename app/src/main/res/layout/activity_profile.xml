@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_tab"
+    tools:context="gmedia.net.id.semargres2018.ProfileActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_default"
+        android:scrollbarSize="@dimen/scrollbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Isi biodata diri sesuai dengan KTP anda"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:id="@+id/iv_no_ktp"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="No KTP"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_no_ktp"
+                        android:id="@+id/edt_no_ktp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="numberSigned"
+                        android:imeOptions="actionNext" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_nama"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Nama"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_nama"
+                        android:id="@+id/edt_nama"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_tempat_lahir"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Tempat Lahir"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_tempat_lahir"
+                        android:id="@+id/edt_tempat_lahir"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_tanggal_lahir"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Tanggal Lahir"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_tanggal_lahir"
+                        android:id="@+id/edt_tanggal_lahir"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="none"
+                        android:editable="false"
+                        android:focusable="false"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_alamat"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Alamat"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_alamat"
+                        android:id="@+id/edt_alamat"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_email"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Email"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_email"
+                        android:id="@+id/edt_email"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionNext" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_uncheck"
+                        android:id="@+id/iv_no_telp"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Telepon"
+                        android:text=""
+                        android:layout_toRightOf="@id/iv_no_telp"
+                        android:id="@+id/edt_no_telp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="phone"
+                        android:imeOptions="actionDone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Jenis Kelamin"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_active"
+                        android:id="@+id/iv_jenis_kelamin"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:layout_toRightOf="@id/iv_jenis_kelamin"
+                        android:id="@+id/sp_jenis_kelamin"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Agama"
+                    android:textColor="@color/color_black" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_active"
+                        android:id="@+id/iv_agama"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:layout_toRightOf="@id/iv_agama"
+                        android:id="@+id/sp_agama"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Status Pernikahan"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_active"
+                        android:id="@+id/iv_status_nikah"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:layout_toRightOf="@id/iv_status_nikah"
+                        android:id="@+id/sp_status_nikah"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Pekerjaan"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_active"
+                        android:id="@+id/iv_pekerjaan"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:layout_toRightOf="@id/iv_pekerjaan"
+                        android:id="@+id/sp_pekerjaan"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_bottom_fragment"
+                android:orientation="horizontal"
+                android:id="@+id/ll_footer"
+                android:background="@color/color_tab"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical|right">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Cancel"
+                    android:visibility="gone"
+                    android:id="@+id/btn_cancel"
+                    android:textSize="@dimen/default_button"
+                    android:textAllCaps="false"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Save"
+                    android:textSize="@dimen/default_button"
+                    android:id="@+id/btn_simpan"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="?attr/selectableItemBackground"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/pb_process"
+        android:visibility="gone"/>
+
+</RelativeLayout>

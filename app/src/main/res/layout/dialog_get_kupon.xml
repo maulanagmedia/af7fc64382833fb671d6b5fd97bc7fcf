@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/modul_margin_default"
+        android:layout_marginBottom="@dimen/modul_margin_default"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="vertical"
+            android:id="@+id/ll_head"
+            android:gravity="center"
+            android:background="@drawable/bg_top_d_kupon">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:text="Selamat"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/color_orange"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_footer"
+            android:gravity="center"
+            android:padding="@dimen/modul_margin_default"
+            android:background="@drawable/bg_bottom_d_kupon"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/modul_dialog_size"
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/tv_text1"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:padding="@dimen/margin_default">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:id="@+id/tv_kupon"
+                    android:background="@drawable/ic_bg_kupon"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text=""
+                    android:textSize="60sp"
+                    android:textColor="@color/color_orange"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

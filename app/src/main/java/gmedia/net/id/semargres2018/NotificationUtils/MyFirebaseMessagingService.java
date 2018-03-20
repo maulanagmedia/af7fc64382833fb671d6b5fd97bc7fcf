@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gmedia.net.id.semargres2018.MainActivity;
+import gmedia.net.id.semargres2018.MenuMyQR.NavMyQR;
 import gmedia.net.id.semargres2018.R;
 
 
@@ -62,13 +63,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     typeContent = 1;
                 }else if(extra.get(key).trim().toUpperCase().equals("MKIOS")){
                     typeContent = 2;
-                } else if(extra.get(key).trim().toUpperCase().equals("GA")){
+                } else if(extra.get(key).trim().toUpperCase().equals("3")){
                     typeContent = 3;
                 }
             }
         }
 
-        if(typeContent != 3){
+        if(typeContent != 5){
             switch (typeContent){
                 case 1:
                     intent = new Intent(this, MainActivity.class);
@@ -76,15 +77,26 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 case 2:
                     //intent = new Intent(this, PenjualanHariIni.class);
                     break;
+                case 3:
+                    intent = new Intent(this, MainActivity.class);
+                    break;
                 default:
                     intent = new Intent(this, MainActivity.class);
                     break;
             }
 
             intent.putExtra("backto", true);
+            String message = "", jml = "";
             for(String key: extra.keySet()){
                 intent.putExtra(key, extra.get(key));
+                if(typeContent == 3 && key.equals("message")) message = extra.get(key);
+                if(typeContent == 3 && key.equals("jumlah")) jml = extra.get(key);
             }
+
+            if(typeContent == 3){
+                NavMyQR.showDialog(message, jml);
+            }
+
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(this,0 /*request code*/, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -95,7 +107,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             // Set Notification
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.mipmap.ic_cart)
+                    .setSmallIcon(R.mipmap.ic_notif)
                     .setColor(IconColor)
                     .setContentTitle(title)
                     .setContentText(body)

@@ -20,12 +20,18 @@ public class SessionManager {
 	int PRIVATE_MODE = 0;
 	
 	// Sharedpref file name
-	private static final String PREF_NAME = "GmediaUserPSPPOLDS";
+	private static final String PREF_NAME = "GMEDIASemargres2018";
 	
 	// All Shared Preferences Keys
-	public static final String TAG_KODE_AREA = "kodearea";
-	public static final String TAG_USERNAME = "username";
-	public static final String TAG_PASSWORD = "password";
+	private static final String IS_LOGIN = "IsLoggedIn";
+	public static final String TAG_UID = "uid";
+	public static final String TAG_EMAIL = "email";
+	public static final String TAG_NAMA = "nama";
+	public static final String TAG_PICTURE = "picture";
+	public static final String TAG_JENIS = "jenis";
+	public static final String TAG_KTP = "ktp";
+	public static final String TAG_SAVED = "saved";
+	public static final String TAG_TOKEN = "token";
 
 	// Constructor
 	public SessionManager(Context context){
@@ -37,28 +43,81 @@ public class SessionManager {
 	/**
 	 * Create login session
 	 * */
-	public void createLoginSession(String username, String password, String kodearea){
+	public void createLoginSession(String uid, String email, String nama, String picture, String jenis,String ktp, String saved){
 
-		editor.putString(TAG_KODE_AREA, kodearea);
+		editor.putBoolean(IS_LOGIN, true);
 
-		editor.putString(TAG_USERNAME, username);
+		editor.putString(TAG_UID, uid);
 
-		editor.putString(TAG_PASSWORD, password);
+		editor.putString(TAG_EMAIL, email);
+
+		editor.putString(TAG_NAMA, nama);
+
+		editor.putString(TAG_PICTURE, picture);
+
+		editor.putString(TAG_KTP, ktp);
+
+		editor.putString(TAG_JENIS, jenis);
+
+		editor.putString(TAG_SAVED, saved);
+
+		// commit changes
+		editor.commit();
+	}
+
+	public void updateToken(String token){
+
+		editor.putString(TAG_TOKEN, token);
+
+		// commit changes
+		editor.commit();
+	}
+
+	public void updateKTP(String ktp){
+
+		editor.putString(TAG_KTP, ktp);
+
 		// commit changes
 		editor.commit();
 	}
 
 	public String getUserInfo(String key){
-		return pref.getString(key, null);
+		return pref.getString(key, "");
 	}
 
-	public String getUser(){
-		return pref.getString(TAG_KODE_AREA, null);
+	public String getEmail(){
+		return pref.getString(TAG_EMAIL, "");
+	}
+
+	public String getUid(){
+		return pref.getString(TAG_UID, "");
+	}
+
+	public String getToken(){
+		return pref.getString(TAG_TOKEN, "");
+	}
+
+	public String getNama(){
+		return pref.getString(TAG_NAMA, "");
+	}
+
+	public String getKTP(){
+		return pref.getString(TAG_KTP, "");
 	}
 
 	/**
 	 * Clear session details
 	 * */
+
+	public boolean isSaved(){
+		if(getUserInfo(TAG_SAVED) != null && getUserInfo(TAG_SAVED).equals("1")){
+
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public void logoutUser(Intent logoutIntent){
 
 		// Clearing all data from Shared Preferences

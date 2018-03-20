@@ -1,0 +1,105 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gmedia.net.id.semargres2018.MenuHome.NavHome"
+    android:background="@color/color_white"
+    android:layout_marginBottom="@dimen/margin_bottom_fragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="@dimen/scrollbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:id="@+id/rl_header_slide">
+
+                <gmedia.net.id.semargres2018.CustomView.WrapContentViewPager
+                    android:id="@+id/pager_introduction"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/slider_pager_item"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"></gmedia.net.id.semargres2018.CustomView.WrapContentViewPager>
+
+                <RelativeLayout
+                    android:id="@+id/rl_view_pager_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/ll_view_pager_dot_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:orientation="horizontal" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_default"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:id="@+id/rv_list_kategori">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_adv"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_title"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:textAllCaps="true"
+                    android:text="Diskon Hari Ini"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/margin_tiny"
+                    android:paddingLeft="@dimen/margin_tiny"
+                    android:id="@+id/rv_list_promo">
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

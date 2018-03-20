@@ -4,12 +4,15 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -46,6 +49,11 @@ public class ImageUtils {
         return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
 
+    public void LoadCategoryImage(Context context, String uri, final ImageView image){
+
+        Picasso.with(context).load(Uri.parse(uri)).resize(120,120).into(image);
+    }
+
     public static Bitmap getBitmapFromURL(String src) {
         try {
             URL url = new URL(src);
@@ -71,12 +79,17 @@ public class ImageUtils {
     // General Image
     public void LoadRealImage(Context context, String uri, final ImageView image){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).error(context.getResources().getDrawable(R.drawable.ic_thumbnail)).placeholder(context.getResources().getDrawable(R.drawable.ic_thumbnail)).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).into(image);
     }
 
     public void LoadRealImage(Context context, String uri, final ImageView image, int thumb){
 
         Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).error(context.getResources().getDrawable(thumb)).placeholder(context.getResources().getDrawable(thumb)).into(image);
+    }
+
+    public void LoadPromoImage(Context context, String uri, final ImageView image){
+
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
     }
 
     public void LoadRealImageNoCache(Context context, String uri, final ImageView image){
@@ -91,23 +104,33 @@ public class ImageUtils {
 
     public void LoadProfileImage(Context context, String uri, final ImageView image){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).transform(new CircleTransform()).error(context.getResources().getDrawable(R.mipmap.ic_person)).placeholder(context.getResources().getDrawable(R.mipmap.ic_person)).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).transform(new CircleTransform()).into(image);
     }
 
     public void LoadSquareImageHeaderSlider(Context context, String uri, final ImageView image, int size){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).resize(size, size).memoryPolicy(MemoryPolicy.NO_CACHE).error(context.getResources().getDrawable(R.drawable.ic_thumbnail)).placeholder(context.getResources().getDrawable(R.drawable.ic_thumbnail)).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).resize(size, size).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
     }
 
     public void LoadCustomSizedImage(Context context, int uri, final ImageView image, int width, int height){
 
-        Picasso.with(context).load(uri).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).resize(width, height).centerCrop().error(context.getResources().getDrawable(R.drawable.ic_thumbnail)).placeholder(context.getResources().getDrawable(R.drawable.ic_thumbnail)).into(image);
+        Picasso.with(context).load(uri).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).resize(width, height).centerCrop().into(image);
     }
 
-    /*public void LoadAdvImage(Context context, String uri, final ImageView image){
+    public void LoadRealImageWithSmall(Context context, String uri, final ImageView image, Drawable resource){
 
-        Glide.with(context).load(Uri.parse(uri)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).error(context.getResources().getDrawable(R.drawable.ic_thumb_adv)).override(360,78).placeholder(context.getResources().getDrawable(R.drawable.ic_thumb_adv)).into(image);
-    }*/
+        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).error(resource).placeholder(resource).into(image);
+    }
+
+    public void LoadCustomSizedImage(Context context, String uri, final ImageView image, int width, int height){
+
+        Picasso.with(context).load(uri).fit().centerCrop().into(image);
+    }
+
+    public void LoadAdvImage(Context context, String uri, final ImageView image){
+
+        Glide.with(context).load(Uri.parse(uri)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).override(360,78).into(image);
+    }
 
     public static Bitmap decodeBitmap(Uri bitmapUri, ContentResolver resolver, int width, int height) throws IOException {
         InputStream is = resolver.openInputStream(bitmapUri);
