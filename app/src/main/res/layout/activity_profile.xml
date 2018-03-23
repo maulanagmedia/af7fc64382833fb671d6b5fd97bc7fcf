@@ -475,6 +475,7 @@
                 android:layout_height="@dimen/margin_bottom_fragment"
                 android:orientation="horizontal"
                 android:id="@+id/ll_footer"
+                android:layout_marginTop="@dimen/margin_small"
                 android:background="@color/color_tab"
                 android:layout_alignParentBottom="true"
                 android:gravity="center_vertical|right">

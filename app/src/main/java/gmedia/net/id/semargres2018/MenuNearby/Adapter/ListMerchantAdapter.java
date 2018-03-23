@@ -19,7 +19,9 @@ import com.maulana.custommodul.ItemValidation;
 
 import java.util.List;
 
+import gmedia.net.id.semargres2018.CustomView.LeftRoundedCornersBitmap;
 import gmedia.net.id.semargres2018.R;
+import gmedia.net.id.semargres2018.Utils.Inisialisasi;
 
 /**
  * Created by Shin on 1/8/2017.
@@ -64,7 +66,9 @@ public class ListMerchantAdapter extends ArrayAdapter{
         int hasil = 0;
         final CustomItem item = items.get(position);
         String title = item.getItem1();
-        if(title.equals("I")){
+        // 0. offer
+        // 1. merchant
+        if(title.equals("0")){
             hasil = 0;
         }else{
             hasil = 1;
@@ -106,7 +110,8 @@ public class ListMerchantAdapter extends ArrayAdapter{
 
         if(tipeViewList == 0){ // iklan
             final CustomItem itemSelected = items.get(position);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth , menuWidth / 6);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth , (int) (menuWidth / Inisialisasi.offerHeight));
+            lp.setMargins(0, iv.dpToPx(context, 6), 0, iv.dpToPx(context, 6));
             holder.cvContainer.setLayoutParams(lp);
             ImageUtils iu = new ImageUtils();
             iu.LoadAdvImage(context, itemSelected.getItem2(), holder.ivAdv);
@@ -119,25 +124,26 @@ public class ListMerchantAdapter extends ArrayAdapter{
             });
         }else{
             final CustomItem itemSelected = items.get(position);
-            LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(menuWidth - iv.dpToPx(context, 16) , menuWidth / 3);
+            LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(holder.cvContainer.getLayoutParams().width , menuWidth / 4);
+            lp2.setMargins(iv.dpToPx(context, 12), iv.dpToPx(context, 6), iv.dpToPx(context, 12), iv.dpToPx(context, 6));
             holder.cvContainer.setLayoutParams(lp2);
             holder.tvTitle.setText(itemSelected.getItem3());
             holder.tvSubtitle.setText(itemSelected.getItem4());
-            holder.tvDesc.setText(itemSelected.getItem8());
-            if(itemSelected.getItem9() != null){
-                holder.tvJarak.setText(Html.fromHtml(itemSelected.getItem9() + " km dari <strong>lokasi sekarang</strong>"));
+            holder.tvDesc.setText(itemSelected.getItem6());
+            if(itemSelected.getItem7() != null){
+                holder.tvJarak.setText(Html.fromHtml(itemSelected.getItem7() + " km dari <strong>lokasi sekarang</strong>"));
             }
             ImageUtils iu2 = new ImageUtils();
-            iu2.LoadRealImageWithSmall(context, itemSelected.getItem5(), holder.ivIcon, context.getResources().getDrawable(R.drawable.logo_semargres));
+            iu2.LoadRealImageWithSmall(context, itemSelected.getItem5(), holder.ivIcon, context.getResources().getDrawable(R.drawable.logo_semargres), new LeftRoundedCornersBitmap());
 
-            holder.cvContainer.setOnClickListener(new View.OnClickListener() {
+            /*holder.cvContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*Intent intent = new Intent(context, DetailMerchant.class);
+                    Intent intent = new Intent(context, DetailMerchant.class);
                     intent.putExtra("id", list.getItem2());
-                    context.startActivity(intent);*/
+                    context.startActivity(intent);
                 }
-            });
+            });*/
         }
         return convertView;
 

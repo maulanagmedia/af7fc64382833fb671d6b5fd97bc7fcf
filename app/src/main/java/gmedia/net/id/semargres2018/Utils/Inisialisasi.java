@@ -6,5 +6,7 @@ package gmedia.net.id.semargres2018.Utils;
 
 public class Inisialisasi {
 
-    public static final String jarakMerchant = "3";
+    public static final String jarakMerchant = "10";
+    public static final String jarakMerchantAll = "300";
+    public static final double offerHeight = 6;
 }

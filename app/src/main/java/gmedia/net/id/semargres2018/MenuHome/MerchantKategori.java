@@ -1,4 +1,4 @@
-package gmedia.net.id.semargres2018.MenuNearby;
+package gmedia.net.id.semargres2018.MenuHome;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -19,29 +19,26 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Looper;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -52,6 +49,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import android.support.v7.widget.SearchView;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -88,14 +86,12 @@ import gmedia.net.id.semargres2018.R;
 import gmedia.net.id.semargres2018.Utils.Inisialisasi;
 import gmedia.net.id.semargres2018.Utils.ServerURL;
 
-public class NavNearby extends Fragment implements LocationListener {
+public class MerchantKategori extends AppCompatActivity implements LocationListener {
 
     private Context context;
-    private View layout;
     private SessionManager session;
     private ItemValidation iv = new ItemValidation();
     private MenuItem mSearchItem;
-    private Toolbar mToolbar;
     private Menu menu;
     private ArrayList<String> suggestionList = new ArrayList<>();
     private SuggestionPref suggestionPref;
@@ -144,23 +140,23 @@ public class NavNearby extends Fragment implements LocationListener {
     private boolean isLoading = false;
     private ArrayList<CustomItem> moreList;
     private SearchView searchView;
-
-    public NavNearby() {
-        // Required empty public constructor
-    }
+    private Toolbar mToolbar;
+    private String idKat = "";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
+        setContentView(R.layout.activity_merchant_kategori);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        layout = inflater.inflate(R.layout.fragment_nav_nearby, container, false);
-        context = getContext();
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.mipmap.ic_back_white));
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
+
+        context = this;
 
         // getLocation update by google
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
@@ -172,22 +168,19 @@ public class NavNearby extends Fragment implements LocationListener {
         buildLocationSettingsRequest();
 
         initUI();
-        return layout;
+
     }
 
     private void initUI() {
 
-        lvNearbyMerchant = (ListView) layout.findViewById(R.id.lv_nearby_merchant);
-        pbLoading = (ProgressBar) layout.findViewById(R.id.pb_loading);
+        lvNearbyMerchant = (ListView) findViewById(R.id.lv_nearby_merchant);
+        pbLoading = (ProgressBar) findViewById(R.id.pb_loading);
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         footerList = li.inflate(R.layout.footer_list, null);
 
-        mToolbar = (Toolbar) layout.findViewById(R.id.toolbar);
-        ((AppCompatActivity)context).setSupportActionBar(mToolbar);
-
         final String[] from = new String[] {"merchant"};
         final int[] to = new int[] {android.R.id.text1};
-        mAdapter = new SimpleCursorAdapter(getActivity(),
+        mAdapter = new SimpleCursorAdapter(context,
                 R.layout.list_sugestion,
                 null,
                 from,
@@ -208,6 +201,14 @@ public class NavNearby extends Fragment implements LocationListener {
         keyword = "";
         startIndex = 0;
         isLoading = false;
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+
+            idKat = bundle.getString("id", "");
+            String title = bundle.getString("title","");
+            if(title.length() > 0 ) setTitle(title);
+        }
 
         //get location
         initLocation();
@@ -231,7 +232,7 @@ public class NavNearby extends Fragment implements LocationListener {
                         lvNearbyMerchant.addFooterView(footerList);
                         startIndex += count;
                         getMoreData();
-                        Log.i(TAG, "onScroll: last ");
+                        //Log.i(TAG, "onScroll: last ");
                     }
                 }
             }
@@ -537,9 +538,8 @@ public class NavNearby extends Fragment implements LocationListener {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        inflater.inflate(R.menu.nearby_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nearby_menu, menu);
         mSearchItem = menu.findItem(R.id.m_search);
 
         MenuItemCompat.setOnActionExpandListener(mSearchItem, new MenuItemCompat.OnActionExpandListener() {
@@ -560,8 +560,7 @@ public class NavNearby extends Fragment implements LocationListener {
             }
         });
 
-        super.onCreateOptionsMenu(menu, inflater);
-        //return true;
+        return true;
     }
 
     public void animateSearchToolbar(int numberOfMenuIcon, boolean containsOverflow, boolean show) {
@@ -643,7 +642,7 @@ public class NavNearby extends Fragment implements LocationListener {
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         searchView = (SearchView) MenuItemCompat
                 .getActionView(menu.findItem(R.id.m_search));
@@ -700,6 +699,8 @@ public class NavNearby extends Fragment implements LocationListener {
                 return false;
             }
         });
+
+        return true;
     }
 
     private void populateAdapter(String query) {
@@ -778,7 +779,7 @@ public class NavNearby extends Fragment implements LocationListener {
 
         pbLoading.setVisibility(View.VISIBLE);
         JSONObject jBody = new JSONObject();
-        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getIklanHome, "", "", 0, new ApiVolley.VolleyCallback() {
+        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getIklanHome+idKat, "", "", 0, new ApiVolley.VolleyCallback() {
 
             @Override
             public void onSuccess(String result) {
@@ -833,7 +834,7 @@ public class NavNearby extends Fragment implements LocationListener {
             jBody.put("jarak", Inisialisasi.jarakMerchantAll);
             jBody.put("latitude", iv.doubleToStringFull(latitude));
             jBody.put("longitude", iv.doubleToStringFull(longitude));
-            jBody.put("kategori", "");
+            jBody.put("kategori", idKat);
             jBody.put("start", String.valueOf(startIndex));
             jBody.put("count", String.valueOf(count));
 
@@ -958,7 +959,7 @@ public class NavNearby extends Fragment implements LocationListener {
             jBody.put("jarak", Inisialisasi.jarakMerchantAll);
             jBody.put("latitude", iv.doubleToStringFull(latitude));
             jBody.put("longitude", iv.doubleToStringFull(longitude));
-            jBody.put("kategori", "");
+            jBody.put("kategori", idKat);
             jBody.put("start", String.valueOf(startIndex));
             jBody.put("count", String.valueOf(count));
 
@@ -1034,5 +1035,22 @@ public class NavNearby extends Fragment implements LocationListener {
     @Override
     public void onProviderDisabled(String s) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
     }
 }

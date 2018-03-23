@@ -34,6 +34,7 @@ import gmedia.net.id.semargres2018.MenuEkupon.NavEkupon;
 import gmedia.net.id.semargres2018.MenuHome.NavHome;
 import gmedia.net.id.semargres2018.MenuMyQR.NavMyQR;
 import gmedia.net.id.semargres2018.MenuNearby.NavNearby;
+import gmedia.net.id.semargres2018.MenuNews.NavNews;
 import gmedia.net.id.semargres2018.TabBehavior.CustomViewPager;
 
 public class MainActivity extends RuntimePermissionsActivity {
@@ -184,6 +185,10 @@ public class MainActivity extends RuntimePermissionsActivity {
             case 2:
                 fragment = new NavEkupon();
                 setTitle("E-Kupon");
+                break;
+            case 3:
+                fragment = new NavNews();
+                setTitle("News");
                 break;
             case 4:
                 fragment = new NavNearby();

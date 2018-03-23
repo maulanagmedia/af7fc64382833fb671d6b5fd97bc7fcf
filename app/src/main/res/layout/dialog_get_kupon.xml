@@ -58,8 +58,11 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_tiny"
-                android:padding="@dimen/margin_default">
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingLeft="@dimen/margin_default"
+                android:paddingRight="@dimen/margin_default"
+                android:paddingBottom="@dimen/margin_default"
+                >
 
                 <TextView
                     android:layout_width="match_parent"

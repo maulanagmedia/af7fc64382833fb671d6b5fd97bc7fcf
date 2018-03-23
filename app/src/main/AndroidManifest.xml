@@ -18,6 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -74,13 +85,16 @@
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TitleOnly" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.TitleOnly"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".ProfileActivity"
-            android:screenOrientation="portrait"></activity>
-
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TitleOnly"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MenuHome.MerchantKategori"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TitleOnly"></activity>
     </application>
 
 </manifest>

@@ -33,12 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/appBar"
-            android:layout_margin="@dimen/margin_default">
+            android:layout_marginBottom="@dimen/margin_bottom_fragment">
 
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/lv_nearby_merchant"></ListView>
+                android:id="@+id/lv_nearby_merchant"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:divider="@null"></ListView>
 
             <ProgressBar
                 android:layout_width="wrap_content"

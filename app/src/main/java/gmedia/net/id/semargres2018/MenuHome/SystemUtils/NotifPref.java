@@ -28,6 +28,7 @@ public class NotifPref {
     // All Shared Preferences Keys
     public static final String TAG_PREF_NAME = "KATEGORI";
     public static final String TAG_LAST_PROMO = "LAST_PROMO";
+    public static final String TAG_ALL_KATEGORI = "LAST_PROMO";
 
     // Constructor
     public NotifPref(Context context){
@@ -45,6 +46,13 @@ public class NotifPref {
         editor.commit();
     }
 
+    public void saveAllKategori(String kat){
+
+        editor.putString(TAG_ALL_KATEGORI, kat);
+
+        editor.commit();
+    }
+
     /**
      * Get stored session data
      * */
@@ -57,6 +65,11 @@ public class NotifPref {
         lastPromo.put(TAG_LAST_PROMO, pref.getString(promo, ""));
 
         return lastPromo;
+    }
+
+    public String getAllKategori(){
+
+        return pref.getString(TAG_ALL_KATEGORI, "");
     }
 
     public void clearPref(){

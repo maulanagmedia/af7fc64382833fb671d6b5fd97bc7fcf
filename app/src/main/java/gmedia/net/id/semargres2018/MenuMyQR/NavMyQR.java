@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.maulana.custommodul.ApiVolley;
@@ -35,6 +36,7 @@ public class NavMyQR extends Fragment {
     private View layout;
     private ImageView ivQrCode;
     public static boolean isLoaded = false;
+    private ProgressBar pbLoading;
 
     public NavMyQR() {
         // Required empty public constructor
@@ -110,6 +112,7 @@ public class NavMyQR extends Fragment {
     private void initUI() {
 
         ivQrCode = (ImageView) layout.findViewById(R.id.iv_qr);
+        pbLoading = (ProgressBar) layout.findViewById(R.id.pb_loading);
 
         getQR();
     }
@@ -117,9 +120,12 @@ public class NavMyQR extends Fragment {
     //region Slider Header
     private void getQR() {
 
+        pbLoading.setVisibility(View.VISIBLE);
         ApiVolley request = new ApiVolley(context, new JSONObject(), "GET", ServerURL.getQrcode, "","", 0, new ApiVolley.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
+
+                pbLoading.setVisibility(View.GONE);
 
                 JSONObject responseAPI;
                 try {
@@ -142,6 +148,7 @@ public class NavMyQR extends Fragment {
             @Override
             public void onError(String result) {
 
+                pbLoading.setVisibility(View.GONE);
             }
         });
     }

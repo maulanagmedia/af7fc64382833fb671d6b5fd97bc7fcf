@@ -15,6 +15,7 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -31,8 +32,11 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import gmedia.net.id.semargres2018.MenuEkupon.Adapter.KuponListAdapter;
+import gmedia.net.id.semargres2018.MenuEkupon.Adapter.MasterKuponAdapter;
 import gmedia.net.id.semargres2018.R;
 import gmedia.net.id.semargres2018.Utils.ServerURL;
 
@@ -48,6 +52,9 @@ public class NavEkupon extends Fragment {
     private List<CustomItem> kuponList, moreList;
     private int startIndex = 0;
     private int count = 10;
+    private ListView lvKupon;
+    private SortedMap<String, List<CustomItem>> masterKuponList;
+    private List<String> merchantList;
 
     public NavEkupon() {
         // Required empty public constructor
@@ -71,10 +78,12 @@ public class NavEkupon extends Fragment {
 
         tvKupon = (TextView) layout.findViewById(R.id.tv_kupon);
         rvKupon = (RecyclerView) layout.findViewById(R.id.rv_list_kupon);
+        lvKupon = (ListView) layout.findViewById(R.id.lv_list_kupon);
         pbLoading = (ProgressBar) layout.findViewById(R.id.pb_loading);
 
         startIndex = 0;
-        getKupon();
+        //getKupon();
+        getMasterKupon();
     }
 
     private void getKupon(){
@@ -104,7 +113,7 @@ public class NavEkupon extends Fragment {
                             kuponList.add(new CustomItem(item.getString("id"),item.getString("nomor"),item.getString("merchant"),item.getString("kategori")));
                         }
 
-                        tvKupon.setText("Anda memiliki "+ String.valueOf(jsonArray.length())+" kupon");
+                        tvKupon.setText("Anda memiliki "+ String.valueOf(jsonArray.length())+" e-kupon");
                     }
 
                     setKuponAdapter(kuponList);
@@ -119,6 +128,107 @@ public class NavEkupon extends Fragment {
                 pbLoading.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void getMasterKupon(){
+
+        pbLoading.setVisibility(View.VISIBLE);
+        JSONObject jBody = new JSONObject();
+
+        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getKuponList, "", "", 0, new ApiVolley.VolleyCallback() {
+
+            @Override
+            public void onSuccess(String result) {
+
+                pbLoading.setVisibility(View.GONE);
+                try {
+                    JSONObject responseAPI = new JSONObject(result);
+                    String status = responseAPI.getJSONObject("metadata").getString("status");
+                    masterKuponList = new TreeMap<>();
+                    merchantList = new ArrayList<>();
+
+                    if(iv.parseNullInteger(status) == 200){
+
+                        JSONArray jsonArray = responseAPI.getJSONArray("response");
+
+                        String merchant = "";
+                        List<CustomItem> kuponPerMerchant = new ArrayList<>();
+
+                        for(int i = 0; i < jsonArray.length();i++){
+
+                            JSONObject item = jsonArray.getJSONObject(i);
+
+                            if(merchant.equals(item.getString("merchant"))){
+
+                                kuponPerMerchant.add(new CustomItem(item.getString("id"),item.getString("nomor"),item.getString("merchant"),item.getString("kategori")));
+
+                            }else{
+
+                                merchant = item.getString("merchant");
+                                kuponPerMerchant = new ArrayList<>();
+
+                                merchantList.add(item.getString("merchant"));
+                                kuponPerMerchant.add(new CustomItem(item.getString("id"),item.getString("nomor"),item.getString("merchant"),item.getString("kategori")));
+                            }
+
+                            if((i+1) < jsonArray.length()){
+
+                                JSONObject item2 = jsonArray.getJSONObject(i+1);
+
+                                if(!item2.getString("merchant").equals(merchant)){ // sudah masuk merchant baru
+
+                                    masterKuponList.put(merchant, kuponPerMerchant);
+                                }
+                            }else if((i+1) == jsonArray.length()){ // akhir
+
+                                masterKuponList.put(merchant, kuponPerMerchant);
+                            }
+                        }
+
+                        tvKupon.setText("Anda memiliki "+ String.valueOf(jsonArray.length())+" e-kupon");
+                    }
+
+                    setMasterKuponAdapter(merchantList, masterKuponList);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+                pbLoading.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void setMasterKuponAdapter(List listItem, SortedMap<String, List<CustomItem>> masterKupon){
+
+        lvKupon.setAdapter(null);
+
+        if(listItem != null && listItem.size() > 0){
+
+            Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            try {
+                // this is why the minimal sdk must be JB
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    display.getRealSize(size);
+                }else {
+                    display.getSize(size);
+                }
+            } catch (NoSuchMethodError err) {
+                display.getSize(size);
+            }
+
+            int menuWidth = 0;
+            double menuFloat = (size.x - (iv.dpToPx(context, 32))) / 2;
+            menuWidth = (int) menuFloat;
+            MasterKuponAdapter adapter = new MasterKuponAdapter((Activity) context, masterKupon, listItem, menuWidth);
+            lvKupon.setAdapter(adapter);
+
+
+        }
     }
 
     private void setKuponAdapter(List listItem){

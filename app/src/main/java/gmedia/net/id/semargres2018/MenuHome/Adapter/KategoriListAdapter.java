@@ -19,6 +19,7 @@ import com.maulana.custommodul.ItemValidation;
 import java.util.HashMap;
 import java.util.List;
 
+import gmedia.net.id.semargres2018.MenuHome.MerchantKategori;
 import gmedia.net.id.semargres2018.MenuHome.SystemUtils.NotifPref;
 import gmedia.net.id.semargres2018.R;
 
@@ -92,10 +93,10 @@ public class KategoriListAdapter extends RecyclerView.Adapter<KategoriListAdapte
                 np.saveKategori(kategori.getItem1(), kategori.getItem4());
 
                 holder.llKatNotif.setVisibility(View.GONE);
-                /*Intent intent = new Intent(context, DetailKategori.class);
+                Intent intent = new Intent(context, MerchantKategori.class);
                 intent.putExtra("id", kategori.getItem1());
                 intent.putExtra("title", kategori.getItem2());
-                context.startActivity(intent);*/
+                context.startActivity(intent);
             }
         });
     }

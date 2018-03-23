@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -117,9 +118,9 @@ public class ImageUtils {
         Picasso.with(context).load(uri).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).resize(width, height).centerCrop().into(image);
     }
 
-    public void LoadRealImageWithSmall(Context context, String uri, final ImageView image, Drawable resource){
+    public void LoadRealImageWithSmall(Context context, String uri, final ImageView image, Drawable resource, Transformation transformation){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).error(resource).placeholder(resource).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).transform(transformation).error(resource).placeholder(resource).into(image);
     }
 
     public void LoadCustomSizedImage(Context context, String uri, final ImageView image, int width, int height){
@@ -129,7 +130,7 @@ public class ImageUtils {
 
     public void LoadAdvImage(Context context, String uri, final ImageView image){
 
-        Glide.with(context).load(Uri.parse(uri)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).override(360,78).into(image);
+        Glide.with(context).load(Uri.parse(uri)).override(360,74).into(image);
     }
 
     public static Bitmap decodeBitmap(Uri bitmapUri, ContentResolver resolver, int width, int height) throws IOException {

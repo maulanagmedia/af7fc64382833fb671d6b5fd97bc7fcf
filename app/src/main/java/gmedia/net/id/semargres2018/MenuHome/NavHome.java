@@ -40,6 +40,7 @@ import gmedia.net.id.semargres2018.MenuHome.Adapter.HeaderSliderAdapter;
 import gmedia.net.id.semargres2018.MenuHome.Adapter.KategoriListAdapter;
 import gmedia.net.id.semargres2018.MenuHome.Adapter.PromoListAdapter;
 import gmedia.net.id.semargres2018.R;
+import gmedia.net.id.semargres2018.Utils.Inisialisasi;
 import gmedia.net.id.semargres2018.Utils.ServerURL;
 
 public class NavHome extends Fragment implements ViewPager.OnPageChangeListener {
@@ -278,14 +279,14 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
 
         JSONObject jBody = new JSONObject();
         try {
-            jBody.put("id_kat", "12");
+            jBody.put("id_kat", "");
             jBody.put("start", "0");
             jBody.put("count", String.valueOf(count));
             jBody.put("keyword", "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ApiVolley request = new ApiVolley(context, jBody, "POST", ServerURL.getMerchantPerKategori, "", "", 0, new ApiVolley.VolleyCallback() {
+        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getMerchantHome, "", "", 0, new ApiVolley.VolleyCallback() {
 
             @Override
             public void onSuccess(String result) {
@@ -343,7 +344,8 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
             }
 
             int menuWidth = 0;
-            double menuFloat = 0.145 * (size.y - 60); // 60 from activity_home.xml
+            //double menuFloat = 0.145 * (size.y - 60); // 60 from activity_home.xml
+            double menuFloat = 0.17 * (size.y); // seperlima dari tinggi
             menuWidth = (int) menuFloat;
 
             PromoListAdapter menuAdapter = new PromoListAdapter(context, listItem, menuWidth, count);
@@ -403,6 +405,25 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
 
                             final String link = item.getString("link");
 
+
+                            Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
+                            Point size = new Point();
+                            try {
+                                // this is why the minimal sdk must be JB
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                                    display.getRealSize(size);
+                                }else {
+                                    display.getSize(size);
+                                }
+                            } catch (NoSuchMethodError err) {
+                                display.getSize(size);
+                            }
+
+                            int menuWidth = 0;
+                            menuWidth = size.x;
+
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth , (int) (menuWidth / Inisialisasi.offerHeight));
+                            ivAdv.setLayoutParams(lp);
                             ImageUtils iu = new ImageUtils();
                             iu.LoadAdvImage(context, offerImage, ivAdv);
 

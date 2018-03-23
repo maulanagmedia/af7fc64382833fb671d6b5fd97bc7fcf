@@ -87,4 +87,10 @@
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="searchViewStyle">@style/SearchViewTheme</item>
     </style>
+
+    <style name="ToolBarTheme.ToolBarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/color_white</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textColorPrimaryInverse">@color/color_white</item>
+    </style>
 </resources>

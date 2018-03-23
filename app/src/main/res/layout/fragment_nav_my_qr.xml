@@ -35,7 +35,12 @@
                 android:text="Tunjukkan QR Code ini ke merchant \nuntuk mendapatkan kupon SEMARGRES"
                 android:textColor="@color/color_white" />
         </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pb_loading"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
     </RelativeLayout>
-
-
 </FrameLayout>
