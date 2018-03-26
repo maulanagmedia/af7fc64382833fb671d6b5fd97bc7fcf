@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gmedia.net.id.semargres2018.DetailMerchant"
+    android:background="@color/color_white"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/abl_main">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ctl_main"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="top"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_white"
+                android:id="@+id/iv_profile"
+                android:scaleType="centerCrop"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_toolbar_title"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/color_white"
+                    style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+                    android:text=""/>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ns_container"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_default"
+            android:layout_marginLeft="@dimen/margin_default">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/ll_1"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:textSize="20sp"
+                    android:textIsSelectable="true"
+                    android:id="@+id/tv_title"
+                    android:text=""/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical|right"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon_big"
+                        android:layout_height="@dimen/default_icon_big"
+                        android:src="@drawable/ic_google_map"
+                        android:layout_marginRight="@dimen/margin_default"
+                        android:background="?attr/selectableItemBackground"
+                        android:id="@+id/iv_map"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon_big"
+                        android:layout_height="@dimen/default_icon_big"
+                        android:src="@drawable/ic_share"
+                        android:background="?attr/selectableItemBackground"
+                        android:id="@+id/iv_share"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/color_black"
+                android:id="@+id/tv_line1"
+                android:layout_below="@id/ll_1"
+                android:layout_marginTop="@dimen/margin_tiny"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_2"
+                android:layout_below="@id/tv_line1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_default"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:layout_width="@dimen/default_icon_medium"
+                            android:layout_height="@dimen/default_icon_medium"
+                            android:src="@drawable/ic_location"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/iv_location"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_medium"
+                            android:layout_toRightOf="@id/iv_location"
+                            android:textColor="@color/color_black"
+                            android:textIsSelectable="true"
+                            android:id="@+id/tv_address"
+                            android:text=""/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:layout_width="@dimen/default_icon_medium"
+                            android:layout_height="@dimen/default_icon_medium"
+                            android:src="@drawable/ic_telpon"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/iv_telephon"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_medium"
+                            android:layout_toRightOf="@id/iv_telephon"
+                            android:textIsSelectable="true"
+                            android:textColor="@color/color_black"
+                            android:id="@+id/tv_telephon"
+                            android:text=""/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="top">
+
+                        <ImageView
+                            android:layout_width="@dimen/default_icon_medium"
+                            android:layout_height="@dimen/default_icon_medium"
+                            android:src="@drawable/ic_waktu"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/iv_waktu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_medium"
+                            android:layout_toRightOf="@id/iv_waktu"
+                            android:textColor="@color/color_black"
+                            android:id="@+id/tv_waktu"
+                            android:text=""/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/pb_loading"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:id="@+id/tv_line2"
+                android:layout_below="@id/rv_2"
+                android:background="@color/color_black"
+                android:layout_marginTop="@dimen/margin_medium"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_line2"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:divider="@null"
+
+                android:scrollbarSize="@dimen/scrollbar"
+                android:id="@+id/lv_list_promo"></ListView>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

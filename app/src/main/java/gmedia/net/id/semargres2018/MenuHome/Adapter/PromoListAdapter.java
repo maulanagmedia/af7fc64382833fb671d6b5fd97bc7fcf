@@ -16,6 +16,7 @@ import com.maulana.custommodul.ItemValidation;
 
 import java.util.List;
 
+import gmedia.net.id.semargres2018.DetailMerchant;
 import gmedia.net.id.semargres2018.R;
 
 /**
@@ -74,9 +75,9 @@ public class PromoListAdapter extends RecyclerView.Adapter<PromoListAdapter.MyVi
         holder.cvContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(context, DetailMerchant.class);
+                Intent intent = new Intent(context, DetailMerchant.class);
                 intent.putExtra("id", promo.getItem1());
-                context.startActivity(intent);*/
+                context.startActivity(intent);
             }
         });
     }

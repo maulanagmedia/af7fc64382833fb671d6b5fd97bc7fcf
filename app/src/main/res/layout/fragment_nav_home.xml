@@ -45,6 +45,15 @@
                         android:gravity="center"
                         android:orientation="horizontal" />
                 </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:src="@drawable/ic_profile"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:id="@+id/iv_profile"/>
             </RelativeLayout>
 
             <LinearLayout

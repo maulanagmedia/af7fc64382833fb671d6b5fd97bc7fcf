@@ -867,15 +867,17 @@ public class NavNearby extends Fragment implements LocationListener {
                             // 1. item
                             merchantList.add(new CustomItem("1", item.getString("id_m"),item.getString("nama"),item.getString("deskripsi"), item.getString("foto"),item.getString("alamat"), round(item.getString("jarak"),2)));
 
-                            if(i % 8 == 0){
+                            if(listOffer.size() > 0){
+                                if(i % 8 == 0){
 
-                                if(offerIndex >= listOffer.size()){
-                                    offerIndex = 0;
+                                    if(offerIndex >= listOffer.size()){
+                                        offerIndex = 0;
+                                    }
+
+                                    HashMap<String, String> offer =  listOffer.get(offerIndex);
+                                    merchantList.add(new CustomItem("0", offer.get("icon"), offer.get("link")));
+                                    offerIndex++;
                                 }
-
-                                HashMap<String, String> offer =  listOffer.get(offerIndex);
-                                merchantList.add(new CustomItem("0", offer.get("icon"), offer.get("link")));
-                                offerIndex++;
                             }
                         }
                     }
@@ -992,7 +994,9 @@ public class NavNearby extends Fragment implements LocationListener {
                             // 1. item
                             moreList.add(new CustomItem("1", item.getString("id_m"),item.getString("nama"),item.getString("deskripsi"), item.getString("foto"),item.getString("alamat"), round(item.getString("jarak"),2)));
 
-                            if(i % 8 == 0){
+                            int currentLength = 0;
+                            if(adapter != null) currentLength = adapter.getCount();
+                            if((i + currentLength) % 8 == 0){
 
                                 if(offerIndex >= listOffer.size()){
                                     offerIndex = 0;

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/cv_container"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="1dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/color_promo"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.45"
+                android:layout_height="match_parent"
+                android:id="@+id/iv_icon"
+                android:scaleType="centerCrop"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.55"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/margin_small">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:id="@+id/tv_title"
+                    android:textSize="18sp"
+                    android:maxLines="2"
+                    android:textColor="@color/color_white"
+                    android:text=""
+                    android:textAllCaps="true"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:layout_below="@id/tv_title"
+                    android:id="@+id/tv_line1"
+                    android:background="@color/color_white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:id="@+id/tv_subtitle"
+                    android:layout_below="@id/tv_line1"
+                    android:textColor="@color/color_white"
+                    android:textSize="10sp"
+                    android:text=""
+                    android:maxLines="5"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:id="@+id/tv_subtitle1"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:text=""
+                    android:ellipsize="end"
+                    android:scrollHorizontally="false"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:id="@+id/tv_desc"
+                    android:textSize="10sp"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="false"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

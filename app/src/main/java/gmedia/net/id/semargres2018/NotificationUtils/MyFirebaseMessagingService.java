@@ -20,6 +20,7 @@ import com.maulana.custommodul.ItemValidation;
 import java.util.HashMap;
 import java.util.Map;
 
+import gmedia.net.id.semargres2018.DetailPromoActivity;
 import gmedia.net.id.semargres2018.MainActivity;
 import gmedia.net.id.semargres2018.MenuMyQR.NavMyQR;
 import gmedia.net.id.semargres2018.R;
@@ -59,9 +60,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         int typeContent = 0;
         for(String key: extra.keySet()){
             if(key.trim().toUpperCase().equals("JENIS")){
-                if(extra.get(key).trim().toUpperCase().equals("MAIN")){
+                if(extra.get(key).trim().toUpperCase().equals("1")){
                     typeContent = 1;
-                }else if(extra.get(key).trim().toUpperCase().equals("MKIOS")){
+                }else if(extra.get(key).trim().toUpperCase().equals("2")){
                     typeContent = 2;
                 } else if(extra.get(key).trim().toUpperCase().equals("3")){
                     typeContent = 3;
@@ -75,7 +76,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     intent = new Intent(this, MainActivity.class);
                     break;
                 case 2:
-                    //intent = new Intent(this, PenjualanHariIni.class);
+                    intent = new Intent(this, DetailPromoActivity.class);
                     break;
                 case 3:
                     intent = new Intent(this, MainActivity.class);

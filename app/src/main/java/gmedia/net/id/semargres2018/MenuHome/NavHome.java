@@ -39,6 +39,7 @@ import gmedia.net.id.semargres2018.CustomView.WrapContentViewPager;
 import gmedia.net.id.semargres2018.MenuHome.Adapter.HeaderSliderAdapter;
 import gmedia.net.id.semargres2018.MenuHome.Adapter.KategoriListAdapter;
 import gmedia.net.id.semargres2018.MenuHome.Adapter.PromoListAdapter;
+import gmedia.net.id.semargres2018.ProfileActivity;
 import gmedia.net.id.semargres2018.R;
 import gmedia.net.id.semargres2018.Utils.Inisialisasi;
 import gmedia.net.id.semargres2018.Utils.ServerURL;
@@ -65,6 +66,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
     private RecyclerView rvListPromo;
     private List<CustomItem> promoList;
     private int count = 15;
+    private ImageView ivProfile;
 
     public NavHome() {
         // Required empty public constructor
@@ -96,8 +98,12 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         rvListKategori = (RecyclerView) layout.findViewById(R.id.rv_list_kategori);
         ivAdv = (ImageView) layout.findViewById(R.id.iv_adv);
         rvListPromo = (RecyclerView) layout.findViewById(R.id.rv_list_promo);
+        ivProfile = (ImageView) layout.findViewById(R.id.iv_profile);
 
         session = new SessionManager(context);
+
+        ImageUtils iu = new ImageUtils();
+        iu.LoadProfileImage(context, session.getUserInfo(SessionManager.TAG_PICTURE), ivProfile);
 
         getKategoriData();
 
@@ -189,7 +195,16 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
 
     private void initEvent() {
 
+        ivProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("is_edit", true);
+                ((Activity) context).startActivity(intent);
+                ((Activity) context).finish();
+            }
+        });
     }
 
     //region Slider Header

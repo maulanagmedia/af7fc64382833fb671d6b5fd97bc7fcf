@@ -1,6 +1,7 @@
 package gmedia.net.id.semargres2018.MenuNews.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import com.maulana.custommodul.ItemValidation;
 
 import java.util.List;
 
+import gmedia.net.id.semargres2018.DetailMerchant;
+import gmedia.net.id.semargres2018.DetailPromoActivity;
 import gmedia.net.id.semargres2018.R;
 
 /**
@@ -73,9 +76,10 @@ public class NewsPromoAdapter extends RecyclerView.Adapter<NewsPromoAdapter.MyVi
         holder.cvContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(context, DetailMerchant.class);
-                intent.putExtra("id", promo.getItem1());
-                context.startActivity(intent);*/
+                Intent intent = new Intent(context, DetailPromoActivity.class);
+                intent.putExtra("id_promo", promo.getItem1());
+                intent.putExtra("kategori", "promo");
+                context.startActivity(intent);
             }
         });
     }

@@ -90,7 +90,7 @@ public class ImageUtils {
 
     public void LoadPromoImage(Context context, String uri, final ImageView image){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).into(image);
     }
 
     public void LoadRealImageNoCache(Context context, String uri, final ImageView image){
@@ -105,7 +105,7 @@ public class ImageUtils {
 
     public void LoadProfileImage(Context context, String uri, final ImageView image){
 
-        Picasso.with(context).load(Uri.parse(uri)).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).transform(new CircleTransform()).into(image);
+        Picasso.with(context).load(Uri.parse(uri)).transform(new CircleTransform()).into(image);
     }
 
     public void LoadSquareImageHeaderSlider(Context context, String uri, final ImageView image, int size){
@@ -121,6 +121,11 @@ public class ImageUtils {
     public void LoadRealImageWithSmall(Context context, String uri, final ImageView image, Drawable resource, Transformation transformation){
 
         Picasso.with(context).load(Uri.parse(uri)).transform(transformation).error(resource).placeholder(resource).into(image);
+    }
+
+    public void LoadRealImageWithSmall(Context context, String uri, final ImageView image, Transformation transformation){
+
+        Picasso.with(context).load(Uri.parse(uri)).transform(transformation).into(image);
     }
 
     public void LoadCustomSizedImage(Context context, String uri, final ImageView image, int width, int height){

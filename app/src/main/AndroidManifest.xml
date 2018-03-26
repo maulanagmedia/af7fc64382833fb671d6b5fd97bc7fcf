@@ -15,10 +15,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -88,13 +88,29 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TitleOnly"></activity>
+            android:theme="@style/AppTheme.TitleOnly" />
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MenuHome.MerchantKategori"
+        <activity
+            android:name=".MenuHome.MerchantKategori"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TitleOnly"></activity>
+            android:theme="@style/AppTheme.TitleOnly" />
+        <activity
+            android:name=".DetailMerchant"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TitleOnly" >
+        </activity>
+        <activity android:name=".DetailPromoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TitleOnly">
+
+            <intent-filter>
+
+                <action android:name="ACT_PROMO" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

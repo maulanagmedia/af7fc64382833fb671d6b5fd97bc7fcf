@@ -274,12 +274,12 @@ public class NavNews extends Fragment {
             double menuFloat = 0.2 * (size.y); // seperlima dari tinggi
             menuWidth = (int) menuFloat;
 
-            NewsPromoAdapter menuAdapter = new NewsPromoAdapter(context, listItem, menuWidth, count);
+            promoAdapter = new NewsPromoAdapter(context, listItem, menuWidth, count);
 
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             rvListPromo.setLayoutManager(mLayoutManager);
             rvListPromo.setItemAnimator(new DefaultItemAnimator());
-            rvListPromo.setAdapter(menuAdapter);
+            rvListPromo.setAdapter(promoAdapter);
 
             EndlessScroll scrollListener = new EndlessScroll((LinearLayoutManager) mLayoutManager) {
                 @Override
@@ -298,7 +298,6 @@ public class NavNews extends Fragment {
     private void getMoreEvent() {
 
         isEventLoading = true;
-        startEvent = 0;
 
         JSONObject jBody = new JSONObject();
         try {

@@ -6,6 +6,7 @@
     <dimen name="radius_super">8dp</dimen>
     <dimen name="margin_vertical">16dp</dimen>
     <dimen name="margin_horizontal">16dp</dimen>
+    <dimen name="margin_big">20dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_medium">12dp</dimen>
     <dimen name="margin_small">8dp</dimen>
@@ -13,12 +14,15 @@
     <dimen name="margin_button">12dp</dimen>
     <dimen name="line">1dp</dimen>
     <dimen name="line_small">0.7dp</dimen>
-    <dimen name="scrollbar">2dp</dimen>
+    <dimen name="scrollbar">1dp</dimen>
     <dimen name="default_icon">20dp</dimen>
+    <dimen name="default_icon_medium">16dp</dimen>
+    <dimen name="default_icon_big">26dp</dimen>
     <dimen name="default_button">19dp</dimen>
     <dimen name="rounded_corner">3dp</dimen>
 
     <dimen name="margin_bottom_fragment">60dp</dimen>
+    <dimen name="margin_bottom">46dp</dimen>
     <dimen name="default_title">12sp</dimen>
 
 </resources>

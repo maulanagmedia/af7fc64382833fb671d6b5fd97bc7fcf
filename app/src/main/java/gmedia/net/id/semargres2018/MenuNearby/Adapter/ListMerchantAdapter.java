@@ -20,6 +20,7 @@ import com.maulana.custommodul.ItemValidation;
 import java.util.List;
 
 import gmedia.net.id.semargres2018.CustomView.LeftRoundedCornersBitmap;
+import gmedia.net.id.semargres2018.DetailMerchant;
 import gmedia.net.id.semargres2018.R;
 import gmedia.net.id.semargres2018.Utils.Inisialisasi;
 
@@ -136,14 +137,14 @@ public class ListMerchantAdapter extends ArrayAdapter{
             ImageUtils iu2 = new ImageUtils();
             iu2.LoadRealImageWithSmall(context, itemSelected.getItem5(), holder.ivIcon, context.getResources().getDrawable(R.drawable.logo_semargres), new LeftRoundedCornersBitmap());
 
-            /*holder.cvContainer.setOnClickListener(new View.OnClickListener() {
+            holder.cvContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailMerchant.class);
-                    intent.putExtra("id", list.getItem2());
+                    intent.putExtra("id", itemSelected.getItem2());
                     context.startActivity(intent);
                 }
-            });*/
+            });
         }
         return convertView;
 

@@ -17,14 +17,17 @@ public class ServerURL {
     public static final String getProfile = baseURL + "profile/view";
     public static final String saveProfile = baseURL + "profile/edit";
 
-    public static final String getPromo = baseURL + "promo";
+    public static final String getPromo = baseURL + "promo/";
     public static final String getQrcode = baseURL + "qrcode";
     public static final String getKategori = baseURL + "kategori";
     public static final String getIklanHome = baseURL + "iklan/";
     public static final String getKuponList = baseURL + "kupon/history";
+
+    public static final String getMerchant = baseURL + "merchant/all/";
     public static final String getNearbyMerchant = baseURL + "merchant/nearby";
     public static final String getMerchantHome = baseURL + "merchant/populer";
     public static final String getMerchantPerKategori = baseURL + "merchant/kategori";
+
     public static final String getEvent = baseURL + "event";
     public static final String getNewsPromo = baseURL + "news_promo";
 }

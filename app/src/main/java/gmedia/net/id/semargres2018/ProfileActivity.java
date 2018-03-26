@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -60,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String selectedJenisKelamin = "", selectedAgama = "", selectedStatusNikah = "", selectedPekerjaan = "";
     private ProgressDialog progressDialog;
     private final String TAG = "PROFILE";
+    private boolean isEdit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,13 @@ public class ProfileActivity extends AppCompatActivity {
         btnSimpan = (Button) findViewById(R.id.btn_simpan);
 
         pbProcess = (ProgressBar) findViewById(R.id.pb_process);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle != null){
+
+            isEdit = bundle.getBoolean("is_edit", false);
+        }
 
         initEvent();
 
@@ -890,9 +900,48 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    private void showLogoutDialog() {
+
+        AlertDialog builder = new AlertDialog.Builder(ProfileActivity.this)
+                .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
+                .setTitle("Konfirmasi")
+                .setMessage("Apakah anda yakin ingin logout?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                        intent.putExtra("logout", true);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_profile, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_logout:
+                showLogoutDialog();
+                return true;
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -904,8 +953,24 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        super.onBackPressed();
-        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        if(isEdit){
+
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        }else{
+
+            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.putExtra("logout", true);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        }
+
+        /*super.onBackPressed();
+        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);*/
     }
 
     private void showErrorDialog(){
