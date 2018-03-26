@@ -152,7 +152,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginTop="6dp"
                         android:gravity="top">
 
                         <ImageView
@@ -177,7 +177,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginTop="6dp"
                         android:gravity="top">
 
                         <ImageView
@@ -223,8 +223,7 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:divider="@null"
-
-                android:scrollbarSize="@dimen/scrollbar"
+                android:scrollbarSize="0dp"
                 android:id="@+id/lv_list_promo"></ListView>
 
         </RelativeLayout>
