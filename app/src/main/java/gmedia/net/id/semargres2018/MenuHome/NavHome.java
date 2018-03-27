@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.maulana.custommodul.ApiVolley;
 import com.maulana.custommodul.CustomItem;
@@ -110,6 +111,10 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         int[] dimension = iv.getScreenResolution(context);
 
         int heightLine = (dimension[0] / 3);
+
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) vpHeaderSlider.getLayoutParams();
+        lp.width = dimension[0];
+        lp.height = dimension[0];
 
         getListHeaderSlider();
 

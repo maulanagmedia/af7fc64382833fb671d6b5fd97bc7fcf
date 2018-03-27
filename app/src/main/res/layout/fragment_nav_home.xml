@@ -18,13 +18,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/rl_header_slide">
 
                 <gmedia.net.id.semargres2018.CustomView.WrapContentViewPager
                     android:id="@+id/pager_introduction"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="360dp"
                     tools:listitem="@layout/slider_pager_item"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"></gmedia.net.id.semargres2018.CustomView.WrapContentViewPager>

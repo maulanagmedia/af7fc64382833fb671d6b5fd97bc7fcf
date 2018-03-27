@@ -933,7 +933,9 @@ public class NavNearby extends Fragment implements LocationListener {
             menuWidth = size.x;
 
             adapter = new ListMerchantAdapter(((Activity)context), tableList, menuWidth);
+            lvNearbyMerchant.addFooterView(footerList);
             lvNearbyMerchant.setAdapter(adapter);
+            lvNearbyMerchant.removeFooterView(footerList);
 
             lvNearbyMerchant.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -1008,7 +1010,7 @@ public class NavNearby extends Fragment implements LocationListener {
                             }
                         }
 
-                        lvNearbyMerchant.removeFooterView(footerList);
+                        //lvNearbyMerchant.removeFooterView(footerList);
                         if(adapter != null) adapter.addMoreData(moreList);
                     }
                 } catch (JSONException e) {

@@ -934,7 +934,9 @@ public class MerchantKategori extends AppCompatActivity implements LocationListe
             menuWidth = size.x;
 
             adapter = new ListMerchantAdapter(((Activity)context), tableList, menuWidth);
+            lvNearbyMerchant.addFooterView(footerList);
             lvNearbyMerchant.setAdapter(adapter);
+            lvNearbyMerchant.removeFooterView(footerList);
 
             lvNearbyMerchant.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -1009,7 +1011,7 @@ public class MerchantKategori extends AppCompatActivity implements LocationListe
                             }
                         }
 
-                        lvNearbyMerchant.removeFooterView(footerList);
+                        //lvNearbyMerchant.removeFooterView(footerList);
                         if(adapter != null) adapter.addMoreData(moreList);
                     }
                 } catch (JSONException e) {

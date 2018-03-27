@@ -130,7 +130,7 @@ public class ImageUtils {
 
     public void LoadCustomSizedImage(Context context, String uri, final ImageView image, int width, int height){
 
-        Picasso.with(context).load(uri).fit().centerCrop().into(image);
+        Picasso.with(context).load(uri).centerCrop().resize(width, height).into(image);
     }
 
     public void LoadAdvImage(Context context, String uri, final ImageView image){

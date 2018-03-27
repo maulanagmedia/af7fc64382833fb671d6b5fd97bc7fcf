@@ -70,9 +70,9 @@ public class HeaderSliderAdapter extends PagerAdapter {
 
         ImageUtils iu = new ImageUtils();
         if(data.getItem2() == null){
-            iu.LoadCustomSizedImage(context, data.getItem6(), imageView, 512, 640);
+            iu.LoadCustomSizedImage(context, data.getItem6(), imageView, 512, 512);
         }else{
-            iu.LoadCustomSizedImage(context, data.getItem2(), imageView, 512, 640);
+            iu.LoadCustomSizedImage(context, data.getItem2(), imageView, 512, 512);
         }
 
         container.addView(itemView);
