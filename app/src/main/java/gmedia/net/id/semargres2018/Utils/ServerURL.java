@@ -30,4 +30,5 @@ public class ServerURL {
 
     public static final String getEvent = baseURL + "event";
     public static final String getNewsPromo = baseURL + "news_promo";
+    public static final String getLatestVersion = baseURL + "latest_version/user";
 }

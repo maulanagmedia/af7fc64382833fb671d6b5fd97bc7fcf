@@ -86,11 +86,7 @@ public class NewsPromoAdapter extends RecyclerView.Adapter<NewsPromoAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        if(masterList.size() < size){
-            return masterList.size();
-        }else{
-            return size;
-        }
+        return masterList.size();
     }
 
 }

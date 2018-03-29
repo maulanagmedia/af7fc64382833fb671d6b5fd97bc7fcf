@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -407,7 +408,13 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
 
                                         if(session.getKTP().equals("")){ // sudah terdaftar, belum registrasi
 
-                                            session.createLoginSession(user.getUid(),user.getEmail(),user.getDisplayName(), String.valueOf(user.getPhotoUrl()), jenisLogin, session.getKTP(), "1");
+                                            session.createLoginSession(user.getUid(),
+                                                    (user.getEmail() != null && user.getEmail().length() > 0) ? user.getEmail() : session.getEmail(),
+                                                    session.getNama().length() > 0 ? session.getNama() : user.getDisplayName(),
+                                                    String.valueOf(user.getPhotoUrl()),
+                                                    jenisLogin,
+                                                    session.getKTP(),
+                                                    "1");
                                             session.updateToken(token);
                                             Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
 
@@ -417,7 +424,12 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
                                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                         }else{
 
-                                            session.createLoginSession(user.getUid(),user.getEmail(),user.getDisplayName(), String.valueOf(user.getPhotoUrl()), jenisLogin, session.getKTP(), "1");
+                                            session.createLoginSession(user.getUid(),
+                                                    (user.getEmail() != null && user.getEmail().length() > 0) ? user.getEmail() : session.getEmail(),
+                                                    session.getNama().length() > 0 ? session.getNama() : user.getDisplayName(),
+                                                    String.valueOf(user.getPhotoUrl()),
+                                                    jenisLogin, session.getKTP(),
+                                                    "1");
                                             session.updateToken(token);
                                             Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
 
@@ -511,7 +523,13 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
 
                             if(user != null){
 
-                                session.createLoginSession(user.getUid(),user.getEmail(),user.getDisplayName(), String.valueOf(user.getPhotoUrl()), jenisLogin, session.getKTP(), "1");
+                                session.createLoginSession(user.getUid(),
+                                        (user.getEmail() != null && user.getEmail().length() > 0) ? user.getEmail() : session.getEmail(),
+                                        session.getNama().length() > 0 ? session.getNama() : user.getDisplayName(),
+                                        String.valueOf(user.getPhotoUrl()),
+                                        jenisLogin,
+                                        session.getKTP(),
+                                        "1");
                                 session.updateToken(token);
                                 Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
@@ -548,6 +566,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
         progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Custom_Dialog);
         progressDialog.setIndeterminate(true);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progressDialog.setMessage("Memuat...");
         progressDialog.show();
     }

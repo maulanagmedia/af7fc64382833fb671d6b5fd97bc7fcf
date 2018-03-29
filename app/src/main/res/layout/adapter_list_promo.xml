@@ -41,7 +41,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="2dp"
                     android:id="@+id/tv_title"
                     android:textSize="18sp"
                     android:maxLines="2"
@@ -54,6 +55,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1.5dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="2dp"
                     android:layout_below="@id/tv_title"
                     android:id="@+id/tv_line1"
                     android:background="@color/color_white"/>
@@ -61,7 +64,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="2dp"
                     android:layout_marginTop="@dimen/margin_tiny"
                     android:id="@+id/tv_subtitle"
                     android:layout_below="@id/tv_line1"
@@ -75,7 +79,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="2dp"
                     android:id="@+id/tv_subtitle1"
                     android:textSize="12sp"
                     android:visibility="gone"
@@ -89,7 +94,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="2dp"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/margin_small"
                     android:id="@+id/tv_desc"

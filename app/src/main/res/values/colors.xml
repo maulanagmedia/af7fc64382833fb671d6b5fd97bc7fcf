@@ -11,8 +11,9 @@
     <color name="color_dialog">#484846</color>
 
     <color name="color_white_54">#8AFFFFFF</color>
+    <color name="color_transparent">#00ffffff</color>
 
-    <color name="color_tab">#f5f5f5</color>
+    <color name="color_tab">#ffffff</color>
     <color name="color_tab_select">#fe0303</color>
     <color name="color_tab_unselect">#757575</color>
     <color name="color_grey">#606060</color>

@@ -107,7 +107,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
+                android:layout_height="@dimen/line_small"
                 android:background="@color/color_black"
                 android:id="@+id/tv_line1"
                 android:layout_below="@id/ll_1"
@@ -133,6 +133,7 @@
                         <ImageView
                             android:layout_width="@dimen/default_icon_medium"
                             android:layout_height="@dimen/default_icon_medium"
+                            android:layout_marginTop="2dp"
                             android:src="@drawable/ic_location"
                             android:layout_alignParentLeft="true"
                             android:id="@+id/iv_location"/>
@@ -158,6 +159,7 @@
                         <ImageView
                             android:layout_width="@dimen/default_icon_medium"
                             android:layout_height="@dimen/default_icon_medium"
+                            android:layout_marginTop="2dp"
                             android:src="@drawable/ic_telpon"
                             android:layout_alignParentLeft="true"
                             android:id="@+id/iv_telephon"/>
@@ -183,6 +185,7 @@
                         <ImageView
                             android:layout_width="@dimen/default_icon_medium"
                             android:layout_height="@dimen/default_icon_medium"
+                            android:layout_marginTop="2dp"
                             android:src="@drawable/ic_waktu"
                             android:layout_alignParentLeft="true"
                             android:id="@+id/iv_waktu"/>
@@ -209,7 +212,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
+                android:layout_height="@dimen/line_small"
                 android:id="@+id/tv_line2"
                 android:layout_below="@id/rv_2"
                 android:background="@color/color_black"

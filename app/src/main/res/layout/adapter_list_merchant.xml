@@ -53,7 +53,7 @@
                     android:layout_marginTop="@dimen/margin_tiny"
                     android:id="@+id/tv_jarak"
                     android:textColor="@color/color_black"
-                    android:textSize="10sp"
+                    android:textSize="11sp"
                     android:singleLine="true"
                     android:ellipsize="end"
                     android:scrollHorizontally="false"/>

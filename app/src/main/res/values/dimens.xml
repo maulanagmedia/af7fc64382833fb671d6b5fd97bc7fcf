@@ -14,7 +14,7 @@
     <dimen name="margin_button">12dp</dimen>
     <dimen name="line">1dp</dimen>
     <dimen name="line_small">0.7dp</dimen>
-    <dimen name="scrollbar">1dp</dimen>
+    <dimen name="scrollbar">0.8dp</dimen>
     <dimen name="default_icon">20dp</dimen>
     <dimen name="default_icon_medium">16dp</dimen>
     <dimen name="default_icon_big">26dp</dimen>

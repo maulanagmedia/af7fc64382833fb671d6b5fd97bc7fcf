@@ -48,15 +48,14 @@
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginRight="@dimen/margin_small"
                         android:layout_marginLeft="@dimen/margin_small"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/default_title"
+                        android:textSize="16sp"
                         android:textColor="@color/color_black"
                         android:text="Event"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/line"
-                        android:visibility="invisible"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/margin_tiny"
                         android:layout_marginLeft="@dimen/margin_tiny"
                         android:layout_marginRight="@dimen/margin_tiny"
@@ -85,15 +84,14 @@
                         android:layout_marginTop="@dimen/margin_small"
                         android:layout_marginRight="@dimen/margin_small"
                         android:layout_marginLeft="@dimen/margin_small"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/default_title"
+                        android:textSize="16sp"
                         android:textColor="@color/color_black"
                         android:text="Promo"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/line"
-                        android:visibility="invisible"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/margin_tiny"
                         android:layout_marginLeft="@dimen/margin_tiny"
                         android:layout_marginRight="@dimen/margin_tiny"

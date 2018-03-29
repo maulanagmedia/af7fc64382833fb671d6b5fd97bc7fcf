@@ -104,7 +104,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         session = new SessionManager(context);
 
         ImageUtils iu = new ImageUtils();
-        iu.LoadProfileImage(context, session.getUserInfo(SessionManager.TAG_PICTURE), ivProfile);
+        //iu.LoadProfileImage(context, session.getUserInfo(SessionManager.TAG_PICTURE), ivProfile);
 
         getKategoriData();
 

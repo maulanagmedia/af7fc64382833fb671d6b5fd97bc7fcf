@@ -35,6 +35,7 @@ public class DetailPromoActivity extends AppCompatActivity {
     private ImageView ivLogo;
     private TextView tvTitle, tvDecl, tvLink;
     private ProgressBar pbLoading;
+    private String dariNotif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,8 @@ public class DetailPromoActivity extends AppCompatActivity {
             id = bundle.getString("id_promo", "");
             jenis = bundle.getString("kategori", "");
 
+            dariNotif = bundle.getString("jenis", "");
+
             if(id.length() > 0 && jenis.length() > 0){
 
                 getDetailPromo();
@@ -103,7 +106,7 @@ public class DetailPromoActivity extends AppCompatActivity {
                             JSONObject item = jsonArray.getJSONObject(i);
                             String title = item.getString("title");
                             String gambar = item.getString("gambar");
-                            final String link = item.getString("link");
+                            String link = item.getString("link");
                             String keterangan = item.getString("keterangan");
 
                             tvTitle.setText(title);
@@ -114,10 +117,16 @@ public class DetailPromoActivity extends AppCompatActivity {
 
                             if(link.length() > 0){
 
+                                if (!link.toLowerCase().startsWith("http://") && !link.toLowerCase().startsWith("https://")) {
+                                    link = "http://" + link;
+                                }
+
+                                final String finalLink = link;
+
                                 tvLink.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalLink));
                                         context.startActivity(browserIntent);
                                     }
                                 });
@@ -153,7 +162,19 @@ public class DetailPromoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
+        if(dariNotif.length() > 0){ // bukan dari notif
+
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }else{
+
+            super.onBackPressed();
+            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        }
+
     }
 }

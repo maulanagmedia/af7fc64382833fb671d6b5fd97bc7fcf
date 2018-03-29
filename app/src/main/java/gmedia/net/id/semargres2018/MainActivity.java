@@ -2,10 +2,13 @@ package gmedia.net.id.semargres2018;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
@@ -14,6 +17,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -26,9 +30,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.maulana.custommodul.ApiVolley;
 import com.maulana.custommodul.ItemValidation;
 import com.maulana.custommodul.RuntimePermissionsActivity;
 import com.maulana.custommodul.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import gmedia.net.id.semargres2018.MenuEkupon.NavEkupon;
 import gmedia.net.id.semargres2018.MenuHome.NavHome;
@@ -36,6 +44,7 @@ import gmedia.net.id.semargres2018.MenuMyQR.NavMyQR;
 import gmedia.net.id.semargres2018.MenuNearby.NavNearby;
 import gmedia.net.id.semargres2018.MenuNews.NavNews;
 import gmedia.net.id.semargres2018.TabBehavior.CustomViewPager;
+import gmedia.net.id.semargres2018.Utils.ServerURL;
 
 public class MainActivity extends RuntimePermissionsActivity {
 
@@ -58,6 +67,7 @@ public class MainActivity extends RuntimePermissionsActivity {
     private static boolean doubleBackToExitPressedOnce;
     private boolean exitState = false;
     private int timerClose = 2000;
+    private String version = "", latestVersion = "", link = "";
 
 
     @Override
@@ -100,6 +110,12 @@ public class MainActivity extends RuntimePermissionsActivity {
                     , REQUEST_PERMISSIONS);
         }
         initUI();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkVersion();
     }
 
     @Override
@@ -313,5 +329,70 @@ public class MainActivity extends RuntimePermissionsActivity {
                 .replace(R.id.fl_container, fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void checkVersion(){
+
+        PackageInfo pInfo = null;
+        version = "";
+
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        version = pInfo.versionName;
+        latestVersion = "";
+        link = "";
+
+        ApiVolley request = new ApiVolley(context, new JSONObject(), "GET", ServerURL.getLatestVersion, "", "", 0, new ApiVolley.VolleyCallback() {
+
+            @Override
+            public void onSuccess(String result) {
+
+                JSONObject responseAPI;
+                try {
+                    responseAPI = new JSONObject(result);
+                    String status = responseAPI.getJSONObject("metadata").getString("status");
+
+                    if(iv.parseNullInteger(status) == 200){
+                        latestVersion = responseAPI.getJSONObject("response").getString("build_version");
+                        link = responseAPI.getJSONObject("response").getString("link_update");
+
+                        if(!version.trim().equals(latestVersion.trim()) && link.length() > 0){
+
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setIcon(R.mipmap.ic_launcher)
+                                    .setTitle("Update")
+                                    .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon download versi terbaru.")
+                                    .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                            startActivity(browserIntent);
+                                        }
+                                    })
+                                    .setCancelable(false)
+                                    .show();
+                        }
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+
+            }
+        });
     }
 }

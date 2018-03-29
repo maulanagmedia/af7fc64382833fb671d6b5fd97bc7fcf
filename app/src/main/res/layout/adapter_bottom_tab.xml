@@ -12,7 +12,7 @@
         android:background="?attr/selectableItemBackground"
         android:id="@+id/ll_container"
         android:gravity="center"
-        android:paddingTop="7dp"
+        android:paddingTop="6dp"
         android:paddingBottom="7dp"
         android:orientation="vertical">
 
@@ -39,7 +39,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="@color/tab_color"
-            android:textSize="10sp" />
+            android:textSize="11sp" />
 
     </LinearLayout>
 </LinearLayout>

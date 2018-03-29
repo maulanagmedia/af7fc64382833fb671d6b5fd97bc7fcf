@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.vision.text.Line;
 import com.maulana.custommodul.CustomItem;
+import com.maulana.custommodul.ImageUtils;
 import com.maulana.custommodul.ItemValidation;
 import com.maulana.custommodul.SessionManager;
 
@@ -55,12 +57,14 @@ public class KuponListAdapter extends RecyclerView.Adapter<KuponListAdapter.MyVi
 
         public TextView tvNomor;
         public RelativeLayout rvContainer;
+        public ImageView ivKupon;
 
         public MyViewHolder(View view) {
             super(view);
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
             tvNomor = (TextView) view.findViewById(R.id.tv_nomor);
             rvContainer = (RelativeLayout) view.findViewById(R.id.rv_container);
+            ivKupon = (ImageView) view.findViewById(R.id.iv_kupon);
         }
     }
 
@@ -90,9 +94,14 @@ public class KuponListAdapter extends RecyclerView.Adapter<KuponListAdapter.MyVi
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final CustomItem list = masterList.get(position);
 
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth , holder.rvContainer.getLayoutParams().height);
+        //LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth , holder.rvContainer.getLayoutParams().height);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(menuWidth - iv.dpToPx(context, 6) , menuWidth + iv.dpToPx(context, 12));
+        lp.setMargins(iv.dpToPx(context, 2), 0, iv.dpToPx(context, 2), 0);
         holder.rvContainer.setLayoutParams(lp);
-        holder.tvNomor.setText(list.getItem2());
+        holder.tvNomor.setText(""+list.getItem2());
+        ImageUtils iu = new ImageUtils();
+
+        iu.LoadRealImage(context, R.drawable.ic_kupon, holder.ivKupon);
         // loading image using Picasso library
 
     }

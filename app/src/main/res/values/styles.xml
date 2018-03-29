@@ -6,6 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="AppTheme1" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:typeface">serif</item>
     </style>
 
     <!-- Base application theme. -->
@@ -40,7 +48,19 @@
     <style name="AppTheme.Custom.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="colorPrimary">@color/color_white</item>
         <item name="colorAccent">@color/color_white</item>
-        <item name="android:background">@color/color_dialog</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Custom14.Dialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorAccent">@color/color_white</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="TabLayoutTop">

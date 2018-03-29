@@ -771,6 +771,14 @@ public class NavNearby extends Fragment implements LocationListener {
             this.longitude = location.getLongitude();
             //setPointMap();
             getOffer();
+        }else if( location != null && location.getLatitude() != 0 && location.getLongitude() != 0 && merchantList == null){
+
+            refreshMode = false;
+            this.location = location;
+            this.latitude = location.getLatitude();
+            this.longitude = location.getLongitude();
+            //setPointMap();
+            getOffer();
         }
     }
 

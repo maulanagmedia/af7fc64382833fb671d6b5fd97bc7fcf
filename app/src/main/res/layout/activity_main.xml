@@ -24,10 +24,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:orientation="vertical"
+        android:layout_gravity="bottom"
         app:layout_behavior="gmedia.net.id.semargres2018.TabBehavior.BottomNavigationBehavior"
         app:tabLayoutId="@+id/tab_layout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/layout_shadow"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"

@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -815,7 +816,7 @@ public class ProfileActivity extends AppCompatActivity {
                         JSONObject jo = responseAPI.getJSONObject("response");
 
                         edtNoKTP.setText(jo.getString("no_ktp"));
-                        if(session.getNama().length() > 0){
+                        if(jo.getString("profile_name").length() == 0){
                            edtNama.setText(session.getNama());
                         }else{
                             edtNama.setText(jo.getString("profile_name"));
@@ -910,12 +911,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                        intent.putExtra("logout", true);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        logOut();
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -961,16 +957,18 @@ public class ProfileActivity extends AppCompatActivity {
             overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         }else{
 
-            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-            intent.putExtra("logout", true);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+            logOut();
         }
 
         /*super.onBackPressed();
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);*/
+    }
+
+    private void logOut(){
+
+        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+        intent.putExtra("logout", true);
+        session.logoutUser(intent);
     }
 
     private void showErrorDialog(){
@@ -982,6 +980,7 @@ public class ProfileActivity extends AppCompatActivity {
                 R.style.AppTheme_Custom_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Menyimpan...");
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progressDialog.show();
     }
 

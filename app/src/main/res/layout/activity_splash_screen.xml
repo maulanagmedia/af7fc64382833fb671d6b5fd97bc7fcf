@@ -4,27 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="1"
-    android:gravity="center"
     android:background="@drawable/ic_background_sp"
     tools:context="gmedia.net.id.semargres2018.SplashScreen">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="0.65"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:gravity="center">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.6"
-            android:id="@+id/iv_logo"
-            android:src="@drawable/ic_logo_hut_semarang"
-            android:scaleType="centerInside"/>
-    </LinearLayout>
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:id="@+id/ll_footer"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_pemkot"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_kadin"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_suaramerdeka"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:src="@drawable/ic_logo_gmedia"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.65"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
+                    android:id="@+id/iv_logo"
+                    android:src="@drawable/ic_logo_hut_semarang"
+                    android:scaleType="centerInside"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
