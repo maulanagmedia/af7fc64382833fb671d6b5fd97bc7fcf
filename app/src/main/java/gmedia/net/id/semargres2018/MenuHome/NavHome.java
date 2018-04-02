@@ -287,7 +287,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
             llPagerIndicator.addView(dots[i], params);
         }
 
-        dots[0].setImageDrawable(context.getResources().getDrawable(R.drawable.dot_selected_item));
+        if(dots.length > 0) dots[0].setImageDrawable(context.getResources().getDrawable(R.drawable.dot_selected_item));
     }
 
     private void setViewPagerTimer(int seconds){

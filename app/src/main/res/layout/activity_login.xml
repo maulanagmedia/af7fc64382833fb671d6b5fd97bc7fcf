@@ -43,7 +43,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:orientation="horizontal"
             android:weightSum="1"
             android:id="@+id/ll_footer"
@@ -52,7 +52,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="0.7"
+                android:layout_weight="0.8"
                 android:layout_marginBottom="@dimen/margin_tiny"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -60,35 +60,12 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="4"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_tiny"
                     android:layout_marginRight="@dimen/margin_tiny"
-                    android:src="@drawable/ic_logo_pemkot"/>
+                    android:src="@drawable/ic_logo_support"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin_tiny"
-                    android:layout_marginRight="@dimen/margin_tiny"
-                    android:src="@drawable/ic_logo_kadin"/>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin_tiny"
-                    android:layout_marginRight="@dimen/margin_tiny"
-                    android:src="@drawable/ic_logo_suaramerdeka"/>
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin_tiny"
-                    android:layout_marginRight="@dimen/margin_tiny"
-                    android:src="@drawable/ic_logo_gmedia"/>
             </LinearLayout>
         </LinearLayout>
 

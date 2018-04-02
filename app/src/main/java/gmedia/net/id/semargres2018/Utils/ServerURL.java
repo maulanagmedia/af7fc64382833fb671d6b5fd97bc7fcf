@@ -6,7 +6,7 @@ package gmedia.net.id.semargres2018.Utils;
 
 public class ServerURL {
 
-    private static final String baseURL = "http://semargres.gmedia.bz/";
+    private static final String baseURL = "https://semargres.gmedia.id/";
 
     public static final String login = baseURL + "auth";
     public static final String register = baseURL + "register";
