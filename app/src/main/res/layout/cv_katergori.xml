@@ -92,8 +92,8 @@
                                     android:layout_height="match_parent">
 
                                     <LinearLayout
-                                        android:layout_width="18dp"
-                                        android:layout_height="18dp"
+                                        android:layout_width="19dp"
+                                        android:layout_height="19dp"
                                         android:gravity="center"
                                         android:id="@+id/ll_kat_notif"
                                         android:visibility="gone"

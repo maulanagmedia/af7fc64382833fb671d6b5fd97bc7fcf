@@ -101,6 +101,7 @@ public class NavNews extends Fragment {
     private void getEvent() {
 
         isEventLoading = true;
+        pbLoading.setVisibility(View.VISIBLE);
 
         startEvent = 0;
         JSONObject jBody = new JSONObject();
@@ -116,6 +117,7 @@ public class NavNews extends Fragment {
             public void onSuccess(String result) {
 
                 isEventLoading = false;
+                pbLoading.setVisibility(View.GONE);
                 JSONObject responseAPI;
                 try {
                     responseAPI = new JSONObject(result);
@@ -148,15 +150,18 @@ public class NavNews extends Fragment {
             public void onError(String result) {
 
                 isEventLoading = false;
+                pbLoading.setVisibility(View.GONE);
             }
         });
     }
 
     private void getPromo() {
 
+        pbLoading.setVisibility(View.VISIBLE);
         isPromoLoading = true;
         JSONObject jBody = new JSONObject();
         startPromo = 0;
+
 
         try {
             jBody.put("start", String.valueOf(startPromo));
@@ -170,6 +175,7 @@ public class NavNews extends Fragment {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 isPromoLoading = false;
                 JSONObject responseAPI;
                 try {
@@ -201,6 +207,7 @@ public class NavNews extends Fragment {
             public void onError(String result) {
 
                 isPromoLoading = false;
+                pbLoading.setVisibility(View.GONE);
             }
         });
     }
@@ -297,6 +304,7 @@ public class NavNews extends Fragment {
 
     private void getMoreEvent() {
 
+        pbLoading.setVisibility(View.VISIBLE);
         isEventLoading = true;
 
         JSONObject jBody = new JSONObject();
@@ -311,6 +319,7 @@ public class NavNews extends Fragment {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 isEventLoading = false;
                 JSONObject responseAPI;
                 try {
@@ -344,12 +353,14 @@ public class NavNews extends Fragment {
             public void onError(String result) {
 
                 isEventLoading = false;
+                pbLoading.setVisibility(View.GONE);
             }
         });
     }
 
     private void getMorePromo() {
 
+        pbLoading.setVisibility(View.VISIBLE);
         isPromoLoading = true;
         JSONObject jBody = new JSONObject();
 
@@ -365,6 +376,7 @@ public class NavNews extends Fragment {
             @Override
             public void onSuccess(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 isPromoLoading = false;
                 JSONObject responseAPI;
                 try {
@@ -399,6 +411,7 @@ public class NavNews extends Fragment {
             @Override
             public void onError(String result) {
 
+                pbLoading.setVisibility(View.GONE);
                 isPromoLoading = false;
             }
         });

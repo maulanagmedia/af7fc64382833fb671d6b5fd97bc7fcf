@@ -186,7 +186,19 @@ public class ApiVolley {
                             hostname.equalsIgnoreCase("settings.crashlytics.com") ||
                             hostname.equalsIgnoreCase("clients4.google.com") ||
                             hostname.equalsIgnoreCase("www.facebook.com") ||
-                            hostname.equalsIgnoreCase("www.instagram.com")) {
+                            hostname.equalsIgnoreCase("www.instagram.com") ||
+                            hostname.equalsIgnoreCase("lh1.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh2.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh3.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh4.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh5.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh6.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh7.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh8.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("lh9.googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("googleusercontent.com") ||
+                            hostname.equalsIgnoreCase("scontent.xx.fbcdn.net") ||
+                            hostname.equalsIgnoreCase("lookaside.facebook.com")) {
                         return true;
                     } else {
                         return false;
