@@ -461,10 +461,10 @@ public class ProfileActivity extends AppCompatActivity {
             jBody.put("no_ktp", edtNoKTP.getText().toString());
             jBody.put("alamat", edtAlamat.getText().toString());
             jBody.put("jenis_kelamin", selectedJenisKelamin);
-            jBody.put("agama", selectedAgama);
+            //jBody.put("agama", selectedAgama);
             jBody.put("tempat_lahir", edtTempatLahir.getText().toString());
-            jBody.put("status_nikah", selectedStatusNikah);
-            jBody.put("pekerjaan", selectedPekerjaan);
+            //jBody.put("status_nikah", selectedStatusNikah);
+            //jBody.put("pekerjaan", selectedPekerjaan);
         } catch (JSONException e) {
             e.printStackTrace();
         }

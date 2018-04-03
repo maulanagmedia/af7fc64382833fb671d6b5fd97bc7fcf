@@ -44,6 +44,7 @@ public class NavMyQR extends Fragment {
     private ProgressBar pbLoading;
     private LinearLayout llContainer, llContainer1;
     private TextView tvText2;
+    private ImageView ivProfile;
 
     public NavMyQR() {
         // Required empty public constructor
@@ -123,6 +124,7 @@ public class NavMyQR extends Fragment {
         ivQrCode = (ImageView) layout.findViewById(R.id.iv_qr);
         pbLoading = (ProgressBar) layout.findViewById(R.id.pb_loading);
         tvText2 = (TextView) layout.findViewById(R.id.tv_text2);
+        ivProfile = (ImageView) layout.findViewById(R.id.iv_profile);
 
         getQR();
 
@@ -132,6 +134,17 @@ public class NavMyQR extends Fragment {
     private void initEvent() {
 
         tvText2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("is_edit", true);
+                ((Activity) context).startActivity(intent);
+                ((Activity) context).finish();
+            }
+        });
+
+        ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

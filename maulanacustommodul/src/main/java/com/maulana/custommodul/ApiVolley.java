@@ -184,7 +184,9 @@ public class ApiVolley {
                     if (hostname.equalsIgnoreCase("semargres.gmedia.id") ||
                             hostname.equalsIgnoreCase("api.crashlytics.com") ||
                             hostname.equalsIgnoreCase("settings.crashlytics.com") ||
-                            hostname.equalsIgnoreCase("clients4.google.com")) {
+                            hostname.equalsIgnoreCase("clients4.google.com") ||
+                            hostname.equalsIgnoreCase("www.facebook.com") ||
+                            hostname.equalsIgnoreCase("www.instagram.com")) {
                         return true;
                     } else {
                         return false;

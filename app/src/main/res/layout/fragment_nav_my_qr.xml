@@ -55,6 +55,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="@dimen/margin_default"
                 android:layout_marginRight="@dimen/margin_default"
+                android:textSize="17sp"
                 android:text="Harap lengkapi data profile untuk mendapatkan QR Code dan mendapatkan E-Kupon Semargres"
                 android:textColor="@color/color_white" />
 
@@ -64,9 +65,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:textSize="15sp"
+                android:textSize="17sp"
+                android:layout_marginTop="@dimen/margin_small"
                 android:text="Lengkapi Data Profile"
                 android:textColor="@color/color_blue" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:src="@drawable/ic_profile"
+                android:id="@+id/iv_profile"/>
         </LinearLayout>
 
         <ProgressBar

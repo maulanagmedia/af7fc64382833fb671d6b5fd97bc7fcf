@@ -31,6 +31,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
+import gmedia.net.id.semargres2018.DetailPromoActivity;
 import gmedia.net.id.semargres2018.R;
 
 
@@ -44,7 +45,7 @@ public class HeaderSliderAdapter extends PagerAdapter {
     public HeaderSliderAdapter(Context context, List<CustomItem> resource) {
         this.context = context;
         this.resource = resource;
-        maxSlide = 8;
+        maxSlide = 10;
     }
 
     @Override
@@ -81,16 +82,21 @@ public class HeaderSliderAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
 
-                if(data.getItem4().equals("")){
+                Intent intent = new Intent(context, DetailPromoActivity.class);
+                intent.putExtra("id_promo", data.getItem1());
+                intent.putExtra("kategori", "event");
+                context.startActivity(intent);
+
+                /*if(data.getItem4().equals("")){
                     new DownloadFileFromURL().execute(data.getItem2());
-                    /*Intent intent = new Intent();
+                    *//*Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(data.getItem2()), "image*//*");
-                    context.startActivity(intent);*/
+                    intent.setDataAndType(Uri.parse(data.getItem2()), "image*//**//*");
+                    context.startActivity(intent);*//*
                 }else{
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data.getItem4()));
                     context.startActivity(browserIntent);
-                }
+                }*/
 
             }
         });

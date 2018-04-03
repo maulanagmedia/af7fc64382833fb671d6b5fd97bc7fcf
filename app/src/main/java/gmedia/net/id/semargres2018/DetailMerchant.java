@@ -59,7 +59,7 @@ public class DetailMerchant extends AppCompatActivity {
     private ImageView ivProfile;
     private String idMerchant = "";
     private TextView tvTitle, tvAddress, tvTelepon, tvWaktu;
-    private ImageView ivMap, ivShare;
+    private ImageView ivFacebook, ivInstagram, ivMap, ivShare;
     private ProgressBar pbLoading;
     private ItemValidation iv = new ItemValidation();
     private List<CustomItem> listPromo;
@@ -69,6 +69,7 @@ public class DetailMerchant extends AppCompatActivity {
     private LinearLayout ll1;
     private RelativeLayout rv2;
     private NestedScrollView nsContainer;
+    private String linkFacebook = "", linkInstagram = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,8 @@ public class DetailMerchant extends AppCompatActivity {
         tvToolbarTitle = (TextView) findViewById(R.id.tv_toolbar_title);
         ivProfile = (ImageView) findViewById(R.id.iv_profile);
         tvTitle = (TextView) findViewById(R.id.tv_title);
+        ivFacebook = (ImageView) findViewById(R.id.iv_facebook);
+        ivInstagram = (ImageView) findViewById(R.id.iv_instagram);
         ivMap = (ImageView) findViewById(R.id.iv_map);
         ivShare = (ImageView) findViewById(R.id.iv_share);
         tvAddress = (TextView) findViewById(R.id.tv_address);
@@ -145,6 +148,8 @@ public class DetailMerchant extends AppCompatActivity {
                             String foto = item.getString("foto");
                             String telephone = (item.getString("handphone").length() > 0) ? item.getString("handphone") : item.getString("notelp");
                             String waktu = item.getString("jam_buka");
+                            linkFacebook = item.getString("link_fb");
+                            linkInstagram = item.getString("link_ig");
 
                             tvTitle.setText(namaMerchant);
                             tvAddress.setText(alamat);
@@ -229,6 +234,21 @@ public class DetailMerchant extends AppCompatActivity {
             }
         });
 
+        ivFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                redirrectToLink(linkFacebook);
+            }
+        });
+
+        ivInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirrectToLink(linkInstagram);
+            }
+        });
+
         ivMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,6 +256,23 @@ public class DetailMerchant extends AppCompatActivity {
                 callGoogleMap(latitudeString, longitudeString);
             }
         });
+    }
+
+    private void redirrectToLink(String link){
+
+        if(link.length() > 0){
+            try{
+
+                if (!link.toLowerCase().startsWith("http://") && !link.toLowerCase().startsWith("https://")) {
+                    link = "http://" + link;
+                }
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                context.startActivity(browserIntent);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
     private void initTampilan() {

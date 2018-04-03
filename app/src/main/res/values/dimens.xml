@@ -17,6 +17,7 @@
     <dimen name="scrollbar">0.8dp</dimen>
     <dimen name="default_icon">20dp</dimen>
     <dimen name="default_icon_medium">16dp</dimen>
+    <dimen name="default_icon_small">23dp</dimen>
     <dimen name="default_icon_big">26dp</dimen>
     <dimen name="default_button">19dp</dimen>
     <dimen name="rounded_corner">3dp</dimen>

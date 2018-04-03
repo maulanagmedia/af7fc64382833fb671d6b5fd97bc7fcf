@@ -119,8 +119,17 @@ public class ListMerchantAdapter extends ArrayAdapter{
             holder.cvContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(itemSelected.getItem3()));
-                    context.startActivity(browserIntent);
+
+                    if(itemSelected.getItem3().length() > 0){
+
+                        String link = itemSelected.getItem3();
+                        if (!link.toLowerCase().startsWith("http://") && !link.toLowerCase().startsWith("https://")) {
+                            link = "http://" + link;
+                        }
+
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                        context.startActivity(browserIntent);
+                    }
                 }
             });
         }else{

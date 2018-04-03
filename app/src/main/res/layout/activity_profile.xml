@@ -112,6 +112,48 @@
                 android:orientation="vertical"
                 android:layout_marginTop="@dimen/margin_default">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Jenis Kelamin"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/default_icon"
+                        android:layout_height="@dimen/default_icon"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:src="@mipmap/ic_cb_active"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_jenis_kelamin"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:layout_toRightOf="@id/iv_jenis_kelamin"
+                        android:id="@+id/sp_jenis_kelamin"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_default">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -311,48 +353,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/margin_default">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_black"
-                    android:layout_marginBottom="@dimen/margin_tiny"
-                    android:text="Jenis Kelamin"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="@dimen/default_icon"
-                        android:layout_height="@dimen/default_icon"
-                        android:layout_marginTop="@dimen/margin_tiny"
-                        android:src="@mipmap/ic_cb_active"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/iv_jenis_kelamin"/>
-
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="@dimen/default_icon"
-                        android:layout_toRightOf="@id/iv_jenis_kelamin"
-                        android:id="@+id/sp_jenis_kelamin"
-                        android:paddingLeft="@dimen/margin_small"
-                        android:paddingRight="@dimen/margin_tiny" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/line"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:background="@color/colorPrimary"></RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/margin_default">
 
                 <TextView
@@ -395,6 +396,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/margin_default">
 
                 <TextView
@@ -437,6 +439,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/margin_default">
 
                 <TextView
