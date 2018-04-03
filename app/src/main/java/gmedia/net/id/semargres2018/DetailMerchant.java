@@ -244,6 +244,7 @@ public class DetailMerchant extends AppCompatActivity {
             }
         });
 
+        if(linkFacebook.length() == 0 ) ivFacebook.setVisibility(View.GONE);
         ivFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -252,6 +253,7 @@ public class DetailMerchant extends AppCompatActivity {
             }
         });
 
+        if(linkInstagram.length() == 0 ) ivInstagram.setVisibility(View.GONE);
         ivInstagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
