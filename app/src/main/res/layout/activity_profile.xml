@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_default"
-        android:scrollbarSize="@dimen/scrollbar">
+        android:scrollbarSize="@dimen/scrollbar"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -328,6 +329,7 @@
                         android:layout_height="@dimen/default_icon"
                         android:layout_marginTop="@dimen/margin_tiny"
                         android:src="@mipmap/ic_cb_active"
+                        android:layout_centerVertical="true"
                         android:id="@+id/iv_jenis_kelamin"/>
 
                     <Spinner
@@ -368,6 +370,7 @@
                         android:layout_width="@dimen/default_icon"
                         android:layout_height="@dimen/default_icon"
                         android:layout_marginTop="@dimen/margin_tiny"
+                        android:layout_centerVertical="true"
                         android:src="@mipmap/ic_cb_active"
                         android:id="@+id/iv_agama"/>
 
@@ -410,6 +413,7 @@
                         android:layout_height="@dimen/default_icon"
                         android:layout_marginTop="@dimen/margin_tiny"
                         android:src="@mipmap/ic_cb_active"
+                        android:layout_centerVertical="true"
                         android:id="@+id/iv_status_nikah"/>
 
                     <Spinner
@@ -450,6 +454,7 @@
                         android:layout_width="@dimen/default_icon"
                         android:layout_height="@dimen/default_icon"
                         android:layout_marginTop="@dimen/margin_tiny"
+                        android:layout_centerVertical="true"
                         android:src="@mipmap/ic_cb_active"
                         android:id="@+id/iv_pekerjaan"/>
 
@@ -493,12 +498,24 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:text="Skip"
+                    android:textSize="@dimen/default_button"
+                    android:id="@+id/btn_skip"
+                    android:visibility="gone"
+                    android:textColor="@color/color_grey"
+                    android:textAllCaps="false"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Save"
                     android:textSize="@dimen/default_button"
                     android:id="@+id/btn_simpan"
                     android:textColor="@color/colorPrimary"
                     android:textAllCaps="false"
                     android:background="?attr/selectableItemBackground"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

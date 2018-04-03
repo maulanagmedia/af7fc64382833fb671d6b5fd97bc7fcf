@@ -15,6 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/ll_container"
             android:orientation="vertical">
 
             <ImageView
@@ -34,6 +36,37 @@
                 android:gravity="center"
                 android:text="Tunjukkan QR Code ini ke merchant \nuntuk mendapatkan e-kupon SEMARGRES"
                 android:textColor="@color/color_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/ll_container_1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/margin_default"
+                android:layout_marginRight="@dimen/margin_default"
+                android:text="Harap lengkapi data profile untuk mendapatkan QR Code dan mendapatkan E-Kupon Semargres"
+                android:textColor="@color/color_white" />
+
+            <TextView
+                android:id="@+id/tv_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:text="Lengkapi Data Profile"
+                android:textColor="@color/color_blue" />
         </LinearLayout>
 
         <ProgressBar

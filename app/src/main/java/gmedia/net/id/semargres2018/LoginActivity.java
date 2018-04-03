@@ -439,7 +439,8 @@ public class LoginActivity extends RuntimePermissionsActivity implements GoogleA
                                             session.updateToken(token);
                                             Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
 
-                                            Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                            //Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                             finish();
                                             startActivity(intent);
                                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

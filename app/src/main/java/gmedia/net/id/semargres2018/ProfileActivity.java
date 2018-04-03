@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView ivNoKTP, ivNama, ivTempatLahir, ivTanggalLahir, ivAlamat, ivEmail, ivTelepon;
     private EditText edtNoKTP, edtNama, edtTempatLahir, edtTanggalLahir, edtAlamat, edtEmail, edtTelepon;
     private Spinner spJenisKelamin, spAgama, spStatusPernikahan, spPekerjaan;
-    private Button btnCancel, btnSimpan;
+    private Button btnCancel, btnSkip, btnSimpan;
     private String dateString = "";
     private List<OptionItem> listJenisKelamin, listAgama, listStatusNikah, listPekerjaan;
     private ProgressBar pbProcess;
@@ -105,6 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
         spPekerjaan = (Spinner) findViewById(R.id.sp_pekerjaan);
 
         btnCancel = (Button) findViewById(R.id.btn_cancel);
+        btnSkip = (Button) findViewById(R.id.btn_skip);
         btnSimpan = (Button) findViewById(R.id.btn_simpan);
 
         pbProcess = (ProgressBar) findViewById(R.id.pb_process);
@@ -579,6 +580,22 @@ public class ProfileActivity extends AppCompatActivity {
                 showErrorDialog();
             }
         });
+
+        if(!isEdit){
+            btnSkip.setVisibility(View.VISIBLE);
+
+            btnSkip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Toast.makeText(context, "Silahkan lengkapi data profile untuk mendapatkan e-kupon Semargres", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    finish();
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                }
+            });
+        }
     }
 
     private void getAgama() {
