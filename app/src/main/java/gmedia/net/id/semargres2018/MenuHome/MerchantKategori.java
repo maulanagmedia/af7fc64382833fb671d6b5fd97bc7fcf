@@ -866,7 +866,15 @@ public class MerchantKategori extends AppCompatActivity implements LocationListe
 
                             // 0. offer
                             // 1. item
-                            merchantList.add(new CustomItem("1", item.getString("id_m"),item.getString("nama"),item.getString("deskripsi"), item.getString("foto"),item.getString("alamat"), round(item.getString("jarak"),2)));
+                            merchantList.add(new CustomItem("1",
+                                    item.getString("id_m"),
+                                    item.getString("nama"),
+                                    item.getString("deskripsi"),
+                                    item.getString("foto"),
+                                    item.getString("alamat"),
+                                    round(item.getString("jarak"),2),
+                                    idKat
+                            ));
 
                             if(listOffer.size() > 0){
                                 if(i % 8 == 0){
@@ -995,7 +1003,15 @@ public class MerchantKategori extends AppCompatActivity implements LocationListe
 
                             // 0. offer
                             // 1. item
-                            moreList.add(new CustomItem("1", item.getString("id_m"),item.getString("nama"),item.getString("deskripsi"), item.getString("foto"),item.getString("alamat"), round(item.getString("jarak"),2)));
+                            moreList.add(new CustomItem("1",
+                                    item.getString("id_m"),
+                                    item.getString("nama"),
+                                    item.getString("deskripsi"),
+                                    item.getString("foto"),
+                                    item.getString("alamat"),
+                                    round(item.getString("jarak"),2),
+                                    idKat
+                            ));
 
                             int currentLength = 0;
                             if(adapter != null) currentLength = adapter.getCount();

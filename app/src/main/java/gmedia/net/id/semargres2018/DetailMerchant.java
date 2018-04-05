@@ -80,6 +80,7 @@ public class DetailMerchant extends AppCompatActivity {
     private String linkFacebook = "", linkInstagram = "";
     private String fotoLink = "";
     private ProgressDialog progressDialog;
+    private String idKategori = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +120,7 @@ public class DetailMerchant extends AppCompatActivity {
         if(bundle != null){
 
             idMerchant = bundle.getString("id", "");
+            idKategori = bundle.getString("id_k", "");
 
             if(idMerchant.length() > 0){
 
@@ -132,7 +134,7 @@ public class DetailMerchant extends AppCompatActivity {
         pbLoading.setVisibility(View.VISIBLE);
 
         JSONObject jBody = new JSONObject();
-        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getMerchant+idMerchant, "", "", 0, new ApiVolley.VolleyCallback() {
+        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getMerchant+idMerchant+"/"+idKategori, "", "", 0, new ApiVolley.VolleyCallback() {
 
             @Override
             public void onSuccess(String result) {

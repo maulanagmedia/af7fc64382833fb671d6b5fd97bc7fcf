@@ -151,6 +151,9 @@ public class ListMerchantAdapter extends ArrayAdapter{
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DetailMerchant.class);
                     intent.putExtra("id", itemSelected.getItem2());
+                    if(itemSelected.getItem8() != null){
+                        intent.putExtra("id_k", itemSelected.getItem8());
+                    }
                     context.startActivity(intent);
                 }
             });
