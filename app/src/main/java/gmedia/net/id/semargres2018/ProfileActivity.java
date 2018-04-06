@@ -404,7 +404,7 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if(selectedAgama.length() == 0){
+        /*if(selectedAgama.length() == 0){
 
             Toast.makeText(context, "Harap pilih agama terlebih dahulu", Toast.LENGTH_LONG).show();
             return;
@@ -421,6 +421,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(context, "Harap pilih pekerjaan terlebih dahulu", Toast.LENGTH_LONG).show();
             return;
         }
+        */
 
         if(pbProcess.getVisibility() == View.VISIBLE){
 
@@ -478,11 +479,12 @@ public class ProfileActivity extends AppCompatActivity {
                     JSONObject responseAPI = new JSONObject(result);
 
                     String status = responseAPI.getJSONObject("metadata").getString("status");
+                    String message = responseAPI.getJSONObject("response").getString("message");
 
                     if(iv.parseNullDouble(status) == 200){
 
                         String statusResponse = responseAPI.getJSONObject("response").getString("status");
-                        String message = responseAPI.getJSONObject("response").getString("message");
+                        message = responseAPI.getJSONObject("response").getString("message");
 
                         if(statusResponse.equals("1")){
 
@@ -493,7 +495,11 @@ public class ProfileActivity extends AppCompatActivity {
                             finish();
                             startActivity(intent);
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        }else{
+                            Toast.makeText(context, message,Toast.LENGTH_LONG).show();
                         }
+                    }else{
+                        Toast.makeText(context, message,Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -559,7 +565,8 @@ public class ProfileActivity extends AppCompatActivity {
 
                         spJenisKelamin.setSelection(0, true);
 
-                        getAgama();
+                        //getAgama();
+                        getProfile();
 
                     }else{
 
@@ -790,7 +797,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                         spPekerjaan.setSelection(0, true);
 
-                        getProfile();
+                        //getProfile();
 
                     }else{
 
@@ -863,7 +870,7 @@ public class ProfileActivity extends AppCompatActivity {
                         spJenisKelamin.setSelection(position, true);
 
                         // Agama
-                        position = 0;
+                        /*position = 0;
                         x = 0;
                         for(OptionItem item: listAgama){
                             if(item.getValue().equals(selectedAgamaJ)) {
@@ -896,7 +903,7 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                             x++;
                         }
-                        spPekerjaan.setSelection(position, true);
+                        spPekerjaan.setSelection(position, true);*/
 
                     }else{
                         //showErrorDialog();
