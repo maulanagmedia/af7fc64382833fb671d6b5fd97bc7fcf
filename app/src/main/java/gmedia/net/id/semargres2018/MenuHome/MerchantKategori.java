@@ -223,10 +223,10 @@ public class MerchantKategori extends AppCompatActivity implements LocationListe
             public void onScrollStateChanged(AbsListView absListView, int i) {
 
                 int threshold = 1;
-                int count = lvNearbyMerchant.getCount();
+                int countMerchant = lvNearbyMerchant.getCount();
 
                 if (i == SCROLL_STATE_IDLE) {
-                    if (lvNearbyMerchant.getLastVisiblePosition() >= count - threshold && !isLoading) {
+                    if (lvNearbyMerchant.getLastVisiblePosition() >= countMerchant - threshold && !isLoading) {
 
                         isLoading = true;
                         lvNearbyMerchant.addFooterView(footerList);

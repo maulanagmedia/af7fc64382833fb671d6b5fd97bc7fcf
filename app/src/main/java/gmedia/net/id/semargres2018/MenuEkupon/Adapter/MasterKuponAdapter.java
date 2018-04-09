@@ -17,9 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.maulana.custommodul.CustomItem;
+import com.maulana.custommodul.EndlessScroll;
 import com.maulana.custommodul.ImageUtils;
 import com.maulana.custommodul.ItemValidation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 
@@ -90,15 +92,48 @@ public class MasterKuponAdapter extends ArrayAdapter{
 
         holder.tvText1.setText(merchant);
 
+        final int[] startIndex = {0};
+        final int count = 10;
+        List<CustomItem> itemPerSelected = new ArrayList<>();
+
+        for(int i = startIndex[0]; i < count; i++){
+
+            if(i < itemSelected.size()){
+
+                itemPerSelected.add(itemSelected.get(i));
+            }
+        }
+        startIndex[0] += count;
+
         if(itemSelected != null && itemSelected.size() > 0){
 
-            KuponListAdapter menuAdapter = new KuponListAdapter(context, itemSelected, menuWidth);
+            final KuponListAdapter menuAdapter = new KuponListAdapter(context, itemSelected, menuWidth);
 
             RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, 2);
             holder.rvEkupon.setLayoutManager(mLayoutManager);
-//        rvListMenu.addItemDecoration(new NavMenu.GridSpacingItemDecoration(2, dpToPx(10), true));
+            //rvListMenu.addItemDecoration(new NavMenu.GridSpacingItemDecoration(2, dpToPx(10), true));
             holder.rvEkupon.setItemAnimator(new DefaultItemAnimator());
             holder.rvEkupon.setAdapter(menuAdapter);
+
+            EndlessScroll scrollListener = new EndlessScroll((GridLayoutManager) mLayoutManager) {
+                @Override
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                    startIndex[0] += count;
+                    List<CustomItem> itemPerSelected = new ArrayList<>();
+                    for(int i = startIndex[0]; i < count+startIndex[0]; i++){
+
+                        if(i < itemSelected.size()){
+
+                            itemPerSelected.add(itemSelected.get(i));
+                        }
+                    }
+
+                    if(itemPerSelected.size() > 0)menuAdapter.addMoreData(itemPerSelected);
+                }
+
+            };
+
+            //holder.rvEkupon.addOnScrollListener(scrollListener);
         }
         return convertView;
 

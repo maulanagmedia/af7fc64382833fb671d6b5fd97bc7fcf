@@ -100,7 +100,8 @@ public class ImageUtils {
 
     public void LoadRealImage(Context context, int uri, final ImageView image){
 
-        Picasso.with(context).load(uri).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);
+        Picasso.with(context).load(uri).into(image);
+
     }
 
     public void LoadProfileImage(Context context, String uri, final ImageView image){

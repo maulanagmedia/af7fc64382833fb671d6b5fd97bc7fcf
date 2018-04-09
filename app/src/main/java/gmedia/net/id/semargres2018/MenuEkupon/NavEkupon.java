@@ -188,6 +188,68 @@ public class NavEkupon extends Fragment {
                         tvKupon.setText("Anda memiliki "+ String.valueOf(jsonArray.length())+" e-kupon");
                     }
 
+                    String merchant = "";
+                    List<CustomItem> kuponPerMerchant = new ArrayList<>();
+
+                    for(int i = 0; i < 100;i++){
+
+                        if(merchant.equals("Sangubariku")){
+
+                            kuponPerMerchant.add(new CustomItem(String.valueOf(i),"1000"+ i ,"Sangubariku", "fashion"));
+
+                        }else{
+
+                            merchant = "Sangubariku";
+                            kuponPerMerchant = new ArrayList<>();
+
+                            merchantList.add("Sangubariku");
+                            kuponPerMerchant.add(new CustomItem(String.valueOf(i),"1000"+ i ,merchant,"fashion"));
+                        }
+
+                        if((i+1) < 100){
+
+                            if(!("Sangubariku").equals(merchant)){ // sudah masuk merchant baru
+
+                                masterKuponList.put(merchant, kuponPerMerchant);
+                            }
+                        }else if((i+1) == 100){ // akhir
+
+                            masterKuponList.put(merchant, kuponPerMerchant);
+                        }
+                    }
+
+                    merchant = "";
+                    kuponPerMerchant = new ArrayList<>();
+
+                    for(int i = 0; i < 100;i++){
+
+                        if(merchant.equals("Sangubariku1")){
+
+                            kuponPerMerchant.add(new CustomItem(String.valueOf(i),"1000"+ i ,"Sangubariku1", "fashion"));
+
+                        }else{
+
+                            merchant = "Sangubariku1";
+                            kuponPerMerchant = new ArrayList<>();
+
+                            merchantList.add("Sangubariku1");
+                            kuponPerMerchant.add(new CustomItem(String.valueOf(i),"1000"+ i ,merchant,"fashion"));
+                        }
+
+                        if((i+1) < 100){
+
+                            if(!("Sangubariku1").equals(merchant)){ // sudah masuk merchant baru
+
+                                masterKuponList.put(merchant, kuponPerMerchant);
+                            }
+                        }else if((i+1) == 100){ // akhir
+
+                            masterKuponList.put(merchant, kuponPerMerchant);
+                        }
+                    }
+
+                    tvKupon.setText("Anda memiliki "+ String.valueOf(200)+" e-kupon");
+
                     setMasterKuponAdapter(merchantList, masterKuponList);
 
                 } catch (JSONException e) {
