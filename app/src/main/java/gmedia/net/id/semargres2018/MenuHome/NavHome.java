@@ -20,9 +20,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.maulana.custommodul.ApiVolley;
 import com.maulana.custommodul.CustomItem;
+import com.maulana.custommodul.FormatItem;
 import com.maulana.custommodul.ImageUtils;
 import com.maulana.custommodul.ItemValidation;
 import com.maulana.custommodul.SessionManager;
@@ -31,7 +33,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,7 +54,7 @@ import gmedia.net.id.semargres2018.Utils.ServerURL;
 
 public class NavHome extends Fragment implements ViewPager.OnPageChangeListener {
 
-    private Context context;
+    public static Context context;
     private View layout;
     private ItemValidation iv = new ItemValidation();
     private SessionManager session;
@@ -68,6 +75,9 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
     private List<CustomItem> promoList;
     private int count = 15;
     private ImageView ivProfile;
+    public static TextView tvKuponTerjual;
+    private String batasKupon = "";
+    private TextView tvDay, tvHour, tvMinutes;
 
     public NavHome() {
         // Required empty public constructor
@@ -100,6 +110,10 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         ivAdv = (ImageView) layout.findViewById(R.id.iv_adv);
         rvListPromo = (RecyclerView) layout.findViewById(R.id.rv_list_promo);
         ivProfile = (ImageView) layout.findViewById(R.id.iv_profile);
+        tvDay = (TextView) layout.findViewById(R.id.tv_day);
+        tvHour = (TextView) layout.findViewById(R.id.tv_hour);
+        tvMinutes = (TextView) layout.findViewById(R.id.tv_minutes);
+        tvKuponTerjual = (TextView) layout.findViewById(R.id.tv_kupon_terjual);
 
         session = new SessionManager(context);
 
@@ -119,6 +133,22 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         getListHeaderSlider();
 
         initEvent();
+    }
+
+    public static void updateKupoTerjual(final String total){
+
+        try {
+            ((Activity) context).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    NavHome.tvKuponTerjual.setText(total);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     private void getKategoriData(){
@@ -331,6 +361,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
                     }
 
                     setPromoList(promoList);
+                    getKuponTerjual();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -342,6 +373,93 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
 
             }
         });
+    }
+
+    private void getKuponTerjual() {
+
+        JSONObject jBody = new JSONObject();
+        ApiVolley request = new ApiVolley(context, jBody, "GET", ServerURL.getKuponTerjual, "", "", 0, new ApiVolley.VolleyCallback() {
+
+            @Override
+            public void onSuccess(String result) {
+
+                JSONObject responseAPI;
+                try {
+                    responseAPI = new JSONObject(result);
+                    String status = responseAPI.getJSONObject("metadata").getString("status");
+
+                    if(iv.parseNullInteger(status) == 200){
+
+                        String total = responseAPI.getJSONObject("response").getString("total");
+                        tvKuponTerjual.setText(total);
+                        batasKupon = responseAPI.getJSONObject("response").getString("batas");
+
+                        timer = new Timer();
+                        timer.scheduleAtFixedRate(new mainTask(), 0, 60 * 1000);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String result) {
+
+            }
+        });
+    }
+
+    private class mainTask extends TimerTask
+    {
+        public void run()
+        {
+
+            if(!batasKupon.isEmpty()){
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(FormatItem.formatTimestamp);
+
+                try {
+                    Date date1 = simpleDateFormat.parse(batasKupon);
+                    Date date2 = simpleDateFormat.parse(iv.getCurrentDate(FormatItem.formatTimestamp));
+
+                    long different = date1.getTime() - date2.getTime();
+
+                    long secondsInMilli = 1000;
+                    long minutesInMilli = secondsInMilli * 60;
+                    long hoursInMilli = minutesInMilli * 60;
+                    long daysInMilli = hoursInMilli * 24;
+
+                    final long elapsedDays = different / daysInMilli;
+                    different = different % daysInMilli;
+
+                    final long elapsedHours = different / hoursInMilli;
+                    different = different % hoursInMilli;
+
+                    final long elapsedMinutes = different / minutesInMilli;
+                    different = different % minutesInMilli;
+
+                    long elapsedSeconds = different / secondsInMilli;
+
+                    //elapsedDays, elapsedHours, elapsedMinutes, elapsedSeconds
+
+                    if(different > 0){
+
+                        ((Activity)context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvDay.setText(String.valueOf(elapsedDays) + " D");
+                                tvHour.setText(String.valueOf(elapsedHours) + " H");
+                                tvMinutes.setText(String.valueOf(elapsedMinutes) + " M");
+                            }
+                        });
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void setPromoList(List<CustomItem> listItem){

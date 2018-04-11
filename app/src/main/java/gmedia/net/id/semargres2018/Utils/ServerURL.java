@@ -22,6 +22,7 @@ public class ServerURL {
     public static final String getKategori = baseURL + "kategori";
     public static final String getIklanHome = baseURL + "iklan/";
     public static final String getKuponList = baseURL + "kupon/history";
+    public static final String getKuponTerjual = baseURL + "kupon/terjual";
 
     public static final String getMerchant = baseURL + "merchant/all/";
     public static final String getNearbyMerchant = baseURL + "merchant/nearby";

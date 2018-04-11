@@ -27,4 +27,8 @@
     <dimen name="margin_bottom">46dp</dimen>
     <dimen name="default_title">12sp</dimen>
 
+    <dimen name="size_label">10sp</dimen>
+    <dimen name="size_title">11sp</dimen>
+    <dimen name="size_value">16sp</dimen>
+
 </resources>

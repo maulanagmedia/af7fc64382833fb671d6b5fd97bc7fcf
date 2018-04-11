@@ -68,6 +68,7 @@ public class MainActivity extends RuntimePermissionsActivity {
     private boolean exitState = false;
     private int timerClose = 2000;
     private String version = "", latestVersion = "", link = "";
+    private boolean updateRequired;
 
 
     @Override
@@ -364,22 +365,43 @@ public class MainActivity extends RuntimePermissionsActivity {
                     if(iv.parseNullInteger(status) == 200){
                         latestVersion = responseAPI.getJSONObject("response").getString("build_version");
                         link = responseAPI.getJSONObject("response").getString("link_update");
+                        updateRequired = (iv.parseNullInteger(responseAPI.getJSONObject("response").getString("wajib")) == 1) ? true : false;
 
                         if(!version.trim().equals(latestVersion.trim()) && link.length() > 0){
-
                             final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                            builder.setIcon(R.mipmap.ic_launcher)
-                                    .setTitle("Update")
-                                    .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon download versi terbaru.")
-                                    .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                                            startActivity(browserIntent);
-                                        }
-                                    })
-                                    .setCancelable(false)
-                                    .show();
+                            if(updateRequired){
+
+                                builder.setIcon(R.mipmap.ic_launcher)
+                                        .setTitle("Update")
+                                        .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon download versi terbaru.")
+                                        .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                                startActivity(browserIntent);
+                                            }
+                                        })
+                                        .setCancelable(false)
+                                        .show();
+                            }else{
+
+                                builder.setIcon(R.mipmap.ic_launcher)
+                                        .setTitle("Update")
+                                        .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon download versi terbaru.")
+                                        .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                                startActivity(browserIntent);
+                                            }
+                                        })
+                                        .setNegativeButton("Update Nanti", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        }).show();
+                            }
                         }
                     }
 
