@@ -121,7 +121,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         initEvent();
     }
 
-    private void getKategoriData() {
+    private void getKategoriData(){
 
         ApiVolley request = new ApiVolley(context, new JSONObject(), "GET", ServerURL.getKategori, "","", 0, new ApiVolley.VolleyCallback() {
             @Override

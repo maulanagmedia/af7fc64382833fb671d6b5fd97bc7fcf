@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     private SessionManager session;
     private ItemValidation iv = new ItemValidation();
     private ImageView ivNoKTP, ivNama, ivTempatLahir, ivTanggalLahir, ivAlamat, ivEmail, ivTelepon;
-    private EditText edtNoKTP, edtNama, edtTempatLahir, edtTanggalLahir, edtAlamat, edtEmail, edtTelepon;
+    private EditText edtNoKTP, edtNama, edtTempatLahir, edtTanggalLahir, edtAlamat, edtEmail, edtTelepon, edtDay, edtMonth, edtYear;
     private Spinner spJenisKelamin, spAgama, spStatusPernikahan, spPekerjaan;
     private Button btnCancel, btnSkip, btnSimpan;
     private String dateString = "";
@@ -95,6 +95,9 @@ public class ProfileActivity extends AppCompatActivity {
         edtNama = (EditText) findViewById(R.id.edt_nama);
         edtTempatLahir = (EditText) findViewById(R.id.edt_tempat_lahir);
         edtTanggalLahir = (EditText) findViewById(R.id.edt_tanggal_lahir);
+        edtDay = (EditText) findViewById(R.id.edt_day);
+        edtMonth = (EditText) findViewById(R.id.edt_month);
+        edtYear = (EditText) findViewById(R.id.edt_year);
         edtAlamat = (EditText) findViewById(R.id.edt_alamat);
         edtEmail = (EditText) findViewById(R.id.edt_email);
         edtTelepon = (EditText) findViewById(R.id.edt_no_telp);
@@ -279,6 +282,74 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         // Edit Tanggal
+        edtDay.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if(edtDay.getText().toString().length() > 0 && edtMonth.getText().toString().length() > 0 && edtYear.getText().toString().length() == 4){
+
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_active);
+                }else{
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_uncheck);
+                }
+            }
+        });
+
+        edtMonth.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if(edtDay.getText().toString().length() > 0 && edtMonth.getText().toString().length() > 0 && edtYear.getText().toString().length() == 4){
+
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_active);
+                }else{
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_uncheck);
+                }
+            }
+        });
+
+        edtYear.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if(edtDay.getText().toString().length() > 0 && edtMonth.getText().toString().length() > 0 && edtYear.getText().toString().length() == 4){
+
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_active);
+                }else{
+                    ivTanggalLahir.setImageResource(R.mipmap.ic_cb_uncheck);
+                }
+            }
+        });
 
         dateString = iv.getCurrentDate(FormatItem.formatDateDisplay) ;
         //edtTanggalLahir.setText();
@@ -362,14 +433,75 @@ public class ProfileActivity extends AppCompatActivity {
             edtTempatLahir.setError(null);
         }
 
-        if(edtTanggalLahir.getText().toString().length() == 0){
+        if(iv.parseNullInteger(edtDay.getText().toString()) > 31){
+
+            edtDay.setError("Format Tanggal tidak benar");
+            edtDay.requestFocus();
+            return;
+        }else{
+            edtDay.setError(null);
+        }
+
+        if(edtDay.getText().toString().length() == 0){
+
+            edtDay.setError("Tanggal harap diisi");
+            edtDay.requestFocus();
+            return;
+        }else{
+
+            edtDay.setError(null);
+            final String day = edtDay.getText().toString();
+            if(day.length() == 1) edtDay.setText("0" + day);
+        }
+
+        if(iv.parseNullInteger(edtMonth.getText().toString()) > 12){
+
+            edtMonth.setError("Format Bulan tidak benar");
+            edtMonth.requestFocus();
+            return;
+        }else{
+            edtMonth.setError(null);
+        }
+
+        if(edtMonth.getText().toString().length() == 0){
+
+            edtMonth.setError("Bulan harap diisi");
+            edtMonth.requestFocus();
+            return;
+
+        }else{
+
+            edtMonth.setError(null);
+            final String month = edtMonth.getText().toString();
+            if(month.length() == 1) edtMonth.setText("0" + month);
+        }
+
+        if(edtYear.getText().toString().length() == 0){
+
+            edtYear.setError("Tahun harap diisi");
+            edtYear.requestFocus();
+            return;
+        }else{
+            edtYear.setError(null);
+        }
+
+        if(edtYear.getText().toString().length() != 4){
+
+            edtYear.setError("Harap isi 4 digit");
+            edtYear.requestFocus();
+            return;
+        }else{
+            edtYear.setError(null);
+        }
+
+        /*if(edtTanggalLahir.getText().toString().length() == 0){
 
             edtTanggalLahir.setError("Tanggal lahir harap diisi");
             edtTanggalLahir.requestFocus();
             return;
         }else{
             edtTanggalLahir.setError(null);
-        }
+        }*/
 
         if(edtAlamat.getText().toString().length() == 0){
 
@@ -457,7 +589,8 @@ public class ProfileActivity extends AppCompatActivity {
 
             jBody.put("email", edtEmail.getText().toString());
             jBody.put("profile_name", edtNama.getText().toString());
-            jBody.put("tgl_lahir", iv.ChangeFormatDateString(edtTanggalLahir.getText().toString(), FormatItem.formatDateDisplay, FormatItem.formatDate));
+            //jBody.put("tgl_lahir", iv.ChangeFormatDateString(edtTanggalLahir.getText().toString(), FormatItem.formatDateDisplay, FormatItem.formatDate));
+            jBody.put("tgl_lahir", edtYear.getText().toString() + "-" + edtMonth.getText().toString() + "-" + edtDay.getText().toString());
             jBody.put("no_telp", edtTelepon.getText().toString());
             jBody.put("no_ktp", edtNoKTP.getText().toString());
             jBody.put("alamat", edtAlamat.getText().toString());
@@ -848,7 +981,10 @@ public class ProfileActivity extends AppCompatActivity {
 
                         edtEmail.setText(session.getEmail().length() > 0 ? session.getEmail() : jo.getString("email"));
                         edtTempatLahir.setText(jo.getString("tempat_lahir"));
-                        edtTanggalLahir.setText(iv.ChangeFormatDateString(jo.getString("tgl_lahir"), FormatItem.formatDate, FormatItem.formatDateDisplay));
+                        //edtTanggalLahir.setText(iv.ChangeFormatDateString(jo.getString("tgl_lahir"), FormatItem.formatDate, FormatItem.formatDateDisplay));
+                        edtDay.setText(iv.ChangeFormatDateString(jo.getString("tgl_lahir"), FormatItem.formatDate, FormatItem.formatDay));
+                        edtMonth.setText(iv.ChangeFormatDateString(jo.getString("tgl_lahir"), FormatItem.formatDate, FormatItem.formatMonth));
+                        edtYear.setText(iv.ChangeFormatDateString(jo.getString("tgl_lahir"), FormatItem.formatDate, FormatItem.formatYear));
                         edtAlamat.setText(jo.getString("alamat"));
                         edtTelepon.setText(jo.getString("no_telp"));
 

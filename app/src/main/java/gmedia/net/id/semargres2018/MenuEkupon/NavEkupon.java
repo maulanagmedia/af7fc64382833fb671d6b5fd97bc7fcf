@@ -188,7 +188,7 @@ public class NavEkupon extends Fragment {
                         tvKupon.setText("Anda memiliki "+ String.valueOf(jsonArray.length())+" e-kupon");
                     }
 
-                    String merchant = "";
+                    /*String merchant = "";
                     List<CustomItem> kuponPerMerchant = new ArrayList<>();
 
                     for(int i = 0; i < 100;i++){
@@ -248,7 +248,7 @@ public class NavEkupon extends Fragment {
                         }
                     }
 
-                    tvKupon.setText("Anda memiliki "+ String.valueOf(200)+" e-kupon");
+                    tvKupon.setText("Anda memiliki "+ String.valueOf(200)+" e-kupon");*/
 
                     setMasterKuponAdapter(merchantList, masterKuponList);
 

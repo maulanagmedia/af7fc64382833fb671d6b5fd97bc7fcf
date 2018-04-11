@@ -196,6 +196,34 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/default_icon"
+                        android:hint="Tanggal Lahir"
+                        android:text=""
+                        android:id="@+id/edt_tanggal_lahir"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/margin_small"
+                        android:paddingRight="@dimen/margin_tiny"
+                        android:background="@android:color/transparent"
+                        android:inputType="none"
+                        android:editable="false"
+                        android:focusable="false"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:layout_marginBottom="@dimen/margin_tiny"
+                    android:text="Tanggal Lahir (dd mm yyyy)"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -205,21 +233,58 @@
                         android:src="@mipmap/ic_cb_uncheck"
                         android:id="@+id/iv_tanggal_lahir"/>
 
-                    <EditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="@dimen/default_icon"
-                        android:hint="Tanggal Lahir"
-                        android:text=""
                         android:layout_toRightOf="@id/iv_tanggal_lahir"
-                        android:id="@+id/edt_tanggal_lahir"
-                        android:gravity="center_vertical"
                         android:paddingLeft="@dimen/margin_small"
                         android:paddingRight="@dimen/margin_tiny"
-                        android:background="@android:color/transparent"
-                        android:inputType="none"
-                        android:editable="false"
-                        android:focusable="false"/>
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="0.3"
+                            android:id="@+id/edt_day"
+                            android:hint="Tanggal"
+                            android:maxLength="2"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:layout_marginRight="@dimen/margin_tiny"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"/>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="0.3"
+                            android:id="@+id/edt_month"
+                            android:hint="Bulan"
+                            android:maxLength="2"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:layout_marginRight="@dimen/margin_tiny"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"/>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:id="@+id/edt_year"
+                            android:hint="Tahun"
+                            android:maxLength="4"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:layout_marginRight="@dimen/margin_tiny"
+                            android:layout_marginLeft="@dimen/margin_tiny"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"/>
+                    </LinearLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
