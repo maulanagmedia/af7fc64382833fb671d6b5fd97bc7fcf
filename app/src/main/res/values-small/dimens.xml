@@ -2,6 +2,6 @@
 <resources>
 
     <dimen name="size_label">8sp</dimen>
-    <dimen name="size_title">10sp</dimen>
+    <dimen name="size_title">14sp</dimen>
     <dimen name="size_value">14sp</dimen>
 </resources>

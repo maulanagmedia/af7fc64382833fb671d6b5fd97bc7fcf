@@ -55,22 +55,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_tiny"
                     android:weightSum="1">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="0.5"
                         android:gravity="center_vertical"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/margin_tiny"
                         android:layout_marginLeft="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
                         android:layout_marginRight="1dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="30dp"
                             android:textSize="@dimen/size_label"
                             android:id="@+id/tv_ket_akhir"
                             android:gravity="center_vertical|right"
@@ -83,13 +83,14 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center"
+                            android:layout_marginTop="@dimen/margin_tiny"
                             android:layout_centerVertical="true"
-                            android:layout_toRightOf="@id/tv_ket_akhir">
+                            android:layout_below="@id/tv_ket_akhir">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="11sp"
+                                android:textSize="@dimen/size_title"
                                 android:gravity="center_vertical|right"
                                 android:background="@drawable/bg_time"
                                 android:textColor="@color/color_white"
@@ -104,7 +105,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="11sp"
+                                android:textSize="@dimen/size_title"
                                 android:gravity="center_vertical|right"
                                 android:background="@drawable/bg_time"
                                 android:textColor="@color/color_white"
@@ -127,52 +128,82 @@
                                 android:paddingBottom="1dp"
                                 android:paddingRight="2dp"
                                 android:paddingLeft="2dp"
+                                android:layout_marginRight="@dimen/margin_tiny"
                                 android:id="@+id/tv_minutes"
                                 android:text="00 H" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/size_title"
+                                android:gravity="center_vertical|right"
+                                android:background="@drawable/bg_time"
+                                android:textColor="@color/color_white"
+                                android:paddingTop="1dp"
+                                android:paddingBottom="1dp"
+                                android:paddingRight="2dp"
+                                android:paddingLeft="2dp"
+                                android:id="@+id/tv_second"
+                                android:text="00 S" />
                         </LinearLayout>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
+                    <TextView
+                        android:layout_width="@dimen/line_small"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_grey_1"></TextView>
+
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="0.5"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_tiny"
+                        android:layout_marginTop="@dimen/margin_tiny"
+                        android:layout_marginLeft="@dimen/margin_medium"
                         android:layout_marginRight="@dimen/margin_small"
-                        android:gravity="center_vertical|right">
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="30dp"
                             android:textSize="@dimen/size_label"
-                            android:gravity="center_vertical|right"
+                            android:gravity="center_vertical"
                             android:paddingRight="@dimen/margin_tiny"
                             android:background="@color/color_white"
                             android:textColor="@color/color_black"
                             android:id="@+id/tv_kupon_terjual_title"
-                            android:text="E-Kupon terjual " />
+                            android:text="E-Kupon terpakai " />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="30dp"
+                            android:layout_marginTop="@dimen/margin_tiny"
                             android:layout_toRightOf="@id/tv_kupon_terjual_title"
                             android:textSize="@dimen/size_value"
                             android:textStyle="bold"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
                             android:gravity="center_vertical|right"
                             android:background="@color/color_white"
                             android:textColor="@color/color_black"
                             android:id="@+id/tv_kupon_terjual"
                             android:text=""
                             android:ellipsize="end"/>
-                    </RelativeLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_small"
+                    android:background="@color/color_grey_1"></TextView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:paddingBottom="@dimen/margin_default"
                     android:paddingLeft="@dimen/margin_default"
                     android:paddingRight="@dimen/margin_default"

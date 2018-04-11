@@ -28,7 +28,7 @@
     <dimen name="default_title">12sp</dimen>
 
     <dimen name="size_label">10sp</dimen>
-    <dimen name="size_title">11sp</dimen>
-    <dimen name="size_value">16sp</dimen>
+    <dimen name="size_title">15sp</dimen>
+    <dimen name="size_value">15sp</dimen>
 
 </resources>

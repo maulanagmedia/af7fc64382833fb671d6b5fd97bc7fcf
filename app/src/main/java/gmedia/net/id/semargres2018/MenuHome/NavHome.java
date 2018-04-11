@@ -77,7 +77,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
     private ImageView ivProfile;
     public static TextView tvKuponTerjual;
     private String batasKupon = "";
-    private TextView tvDay, tvHour, tvMinutes;
+    private TextView tvDay, tvHour, tvMinutes, tvSecond;
 
     public NavHome() {
         // Required empty public constructor
@@ -113,6 +113,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         tvDay = (TextView) layout.findViewById(R.id.tv_day);
         tvHour = (TextView) layout.findViewById(R.id.tv_hour);
         tvMinutes = (TextView) layout.findViewById(R.id.tv_minutes);
+        tvSecond = (TextView) layout.findViewById(R.id.tv_second);
         tvKuponTerjual = (TextView) layout.findViewById(R.id.tv_kupon_terjual);
 
         session = new SessionManager(context);
@@ -395,7 +396,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
                         batasKupon = responseAPI.getJSONObject("response").getString("batas");
 
                         timer = new Timer();
-                        timer.scheduleAtFixedRate(new mainTask(), 0, 60 * 1000);
+                        timer.scheduleAtFixedRate(new mainTask(), 0, 1000);
                     }
 
 
@@ -439,7 +440,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
                     final long elapsedMinutes = different / minutesInMilli;
                     different = different % minutesInMilli;
 
-                    long elapsedSeconds = different / secondsInMilli;
+                    final long elapsedSeconds = different / secondsInMilli;
 
                     //elapsedDays, elapsedHours, elapsedMinutes, elapsedSeconds
 
@@ -451,6 +452,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
                                 tvDay.setText(String.valueOf(elapsedDays) + " D");
                                 tvHour.setText(String.valueOf(elapsedHours) + " H");
                                 tvMinutes.setText(String.valueOf(elapsedMinutes) + " M");
+                                tvSecond.setText(String.valueOf(elapsedSeconds) + " S");
                             }
                         });
                     }
