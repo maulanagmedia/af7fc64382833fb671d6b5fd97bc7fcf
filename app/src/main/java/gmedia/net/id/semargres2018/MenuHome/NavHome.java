@@ -121,8 +121,6 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         ImageUtils iu = new ImageUtils();
         //iu.LoadProfileImage(context, session.getUserInfo(SessionManager.TAG_PICTURE), ivProfile);
 
-        getKategoriData();
-
         int[] dimension = iv.getScreenResolution(context);
 
         int heightLine = (dimension[0] / 3);
@@ -131,9 +129,17 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
         lp.width = dimension[0];
         lp.height = dimension[0];
 
-        getListHeaderSlider();
+
 
         initEvent();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //getKategoriData();
+        getListHeaderSlider();
     }
 
     public static void updateKupoTerjual(final String total){
@@ -275,6 +281,7 @@ public class NavHome extends Fragment implements ViewPager.OnPageChangeListener 
 
                     setHeaderSlider();
                     setUiPageViewController();
+                    getKategoriData();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
